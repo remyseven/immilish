@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immilish — Privacy Policy</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--coral:#FF7043;--navy:#1A237E;--mint:#66BB6A;--sky:#4FC3F7;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Nunito',sans-serif;background:#FAFBFF;color:#2D3748;line-height:1.8;}
+
+/* ── HEADER ── */
+.header{background:var(--navy);padding:28px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.logo-row{display:flex;align-items:center;gap:14px;}
+.logo-box{width:44px;height:44px;background:rgba(255,255,255,.1);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;}
+.lb{height:5px;border-radius:3px;}
+.lb1{width:28px;background:var(--sky)}.lb2{width:18px;background:#FFD54F}.lb3{width:24px;background:var(--coral)}
+.logo-name{font-family:'Baloo 2',cursive;font-size:1.6rem;font-weight:800;color:white;letter-spacing:-0.5px;}
+.logo-name span{color:var(--coral);}
+.header-tag{font-size:.75rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.5);padding:6px 14px;border:1px solid rgba(255,255,255,.15);border-radius:50px;}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#1A237E 0%,#283593 100%);padding:60px 40px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(255,112,67,.12),transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(79,195,247,.08),transparent 60%);pointer-events:none;}
+.hero h1{font-family:'Baloo 2',cursive;font-size:2.4rem;font-weight:800;color:white;margin-bottom:10px;position:relative;}
+.hero p{font-size:1rem;color:rgba(255,255,255,.65);font-weight:600;max-width:540px;margin:0 auto 20px;line-height:1.7;position:relative;}
+.last-updated{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:6px 18px;font-size:.78rem;font-weight:800;color:rgba(255,255,255,.7);position:relative;}
+
+/* ── MAIN CONTENT ── */
+.container{max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+
+.toc{background:white;border-radius:20px;padding:28px 32px;margin-bottom:50px;border:1px solid #E8ECF5;box-shadow:0 4px 20px rgba(0,0,0,.06);}
+.toc-title{font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:800;color:var(--navy);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.toc-title::after{content:'';flex:1;height:2px;background:#F0F4FF;border-radius:1px;}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.toc-list li a{display:flex;align-items:center;gap:10px;color:#546E7A;font-weight:700;font-size:.9rem;text-decoration:none;padding:6px 10px;border-radius:10px;transition:all .15s;}
+.toc-list li a:hover{background:#F0F4FF;color:var(--navy);}
+.toc-list li a .num{width:26px;height:26px;border-radius:8px;background:rgba(255,112,67,.1);color:var(--coral);font-size:.72rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+.section{margin-bottom:48px;}
+.section-header{display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid #F0F4FF;}
+.section-num{width:40px;height:40px;border-radius:12px;background:var(--coral);color:white;font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.section h2{font-family:'Baloo 2',cursive;font-size:1.35rem;font-weight:800;color:var(--navy);}
+.section p{font-size:.95rem;color:#4A5568;font-weight:600;margin-bottom:14px;line-height:1.85;}
+.section p:last-child{margin-bottom:0;}
+.section ul{list-style:none;padding:0;margin-bottom:14px;}
+.section ul li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:.93rem;color:#4A5568;font-weight:600;border-bottom:1px solid #F7F9FF;}
+.section ul li:last-child{border-bottom:none;}
+.section ul li::before{content:'✓';color:var(--mint);font-weight:900;flex-shrink:0;margin-top:2px;}
+.section ul li.x::before{content:'✗';color:var(--coral);}
+
+.highlight-box{background:linear-gradient(135deg,#F0F4FF,#EEF2FF);border-radius:16px;padding:22px 26px;border-left:4px solid var(--navy);margin:20px 0;}
+.highlight-box p{color:var(--navy);font-weight:700;font-size:.92rem;margin:0;}
+
+.green-box{background:linear-gradient(135deg,#E8F5E9,#F1F8E9);border-radius:16px;padding:22px 26px;border-left:4px solid var(--mint);margin:20px 0;}
+.green-box p{color:#2E7D32;font-weight:700;font-size:.92rem;margin:0;}
+
+.coral-box{background:linear-gradient(135deg,#FFF3E0,#FFF8E1);border-radius:16px;padding:22px 26px;border-left:4px solid var(--coral);margin:20px 0;}
+.coral-box p{color:#E65100;font-weight:700;font-size:.92rem;margin:0;}
+
+/* ── CONTACT CARD ── */
+.contact-card{background:var(--navy);border-radius:24px;padding:40px;text-align:center;margin-top:60px;}
+.contact-card h3{font-family:'Baloo 2',cursive;font-size:1.5rem;font-weight:800;color:white;margin-bottom:10px;}
+.contact-card p{color:rgba(255,255,255,.65);font-size:.92rem;font-weight:600;margin-bottom:24px;line-height:1.7;}
+.contact-email{display:inline-block;background:var(--coral);color:white;font-family:'Baloo 2',cursive;font-weight:800;font-size:1rem;padding:14px 36px;border-radius:50px;text-decoration:none;transition:transform .2s;}
+.contact-email:hover{transform:translateY(-2px);}
+.contact-note{margin-top:16px;font-size:.78rem;color:rgba(255,255,255,.4);font-weight:700;}
+
+/* ── FOOTER ── */
+.footer{background:var(--navy);padding:30px 40px;text-align:center;}
+.footer-logo{font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:800;color:white;margin-bottom:6px;}
+.footer-logo span{color:var(--coral);}
+.footer-sub{font-size:.78rem;color:rgba(255,255,255,.35);font-weight:700;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-row">
+    <div class="logo-box">
+      <div class="lb lb1"></div><div class="lb lb2"></div><div class="lb lb3"></div>
+    </div>
+    <div class="logo-name">Immi<span>lish</span></div>
+  </div>
+  <span class="header-tag">Privacy Policy</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Privacy Policy</h1>
+  <p>We built Immilish to help people connect across languages — and we believe your privacy is just as important as your fluency.</p>
+  <span class="last-updated">Last Updated: May 5, 2026</span>
+</div>
+
+<!-- MAIN -->
+<div class="container">
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <div class="toc-title">&#x1F4CB; What's in this policy</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span class="num">1</span>Who We Are</a></li>
+      <li><a href="#s2"><span class="num">2</span>Information We Collect</a></li>
+      <li><a href="#s3"><span class="num">3</span>How We Use Information</a></li>
+      <li><a href="#s4"><span class="num">4</span>AI & Third-Party Services</a></li>
+      <li><a href="#s5"><span class="num">5</span>Data Storage & Security</a></li>
+      <li><a href="#s6"><span class="num">6</span>Children's Privacy</a></li>
+      <li><a href="#s7"><span class="num">7</span>Your Rights & Choices</a></li>
+      <li><a href="#s8"><span class="num">8</span>No Ads. Ever.</a></li>
+      <li><a href="#s9"><span class="num">9</span>Changes to This Policy</a></li>
+      <li><a href="#s10"><span class="num">10</span>Contact Us</a></li>
+    </ul>
+  </div>
+
+  <div class="green-box">
+    <p>&#x1F4A1; <strong>The short version:</strong> Immilish does not sell your data. We do not run ads. We do not require an account. Your learning is your own. The only data that leaves your device is the language questions you answer — sent to our AI to generate coaching feedback.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section" id="s1">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>Who We Are</h2>
+    </div>
+    <p>Immilish is an AI-powered language learning app created and operated by <strong>TYLM LLC</strong>. Immilish was designed and built by Tyler, a young entrepreneur with a passion for helping people communicate across languages and cultures.</p>
+    <p>When we say "Immilish," "we," "us," or "our" in this Privacy Policy, we mean TYLM LLC and the Immilish app.</p>
+    <div class="highlight-box">
+      <p>&#x1F4CD; TYLM LLC is based in the United States. This Privacy Policy applies to all users of the Immilish app worldwide.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section" id="s2">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>Information We Collect</h2>
+    </div>
+    <p>Immilish is designed to collect as little information as possible. Here is exactly what is and is not collected:</p>
+
+    <p><strong>What we do NOT collect:</strong></p>
+    <ul>
+      <li class="x">Your name, email address, or phone number</li>
+      <li class="x">An account login or password of any kind</li>
+      <li class="x">Your location or GPS data</li>
+      <li class="x">Your contacts, camera, or microphone</li>
+      <li class="x">Payment information (the app is free)</li>
+      <li class="x">Any personally identifiable information</li>
+    </ul>
+
+    <p><strong>What is sent to our AI service when you use the app:</strong></p>
+    <ul>
+      <li>The language you selected (e.g., "Spanish")</li>
+      <li>The level you are on (e.g., "Level 3 — Conversations")</li>
+      <li>The question prompt and your typed or selected answer</li>
+    </ul>
+
+    <p>This information is sent to Anthropic's Claude AI to generate a coaching response. It is <strong>not linked to your identity</strong> in any way.</p>
+
+    <div class="coral-box">
+      <p>&#x26A0;&#xFE0F; <strong>Important:</strong> Please do not type personal information (like your real name, address, or phone number) into any answer field in Immilish. Answer fields are for language learning responses only.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="section" id="s3">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>How We Use Information</h2>
+    </div>
+    <p>The only information transmitted from the Immilish app is used solely to:</p>
+    <ul>
+      <li>Generate AI-powered coaching feedback after each answer</li>
+      <li>Generate language learning questions for languages without a built-in question bank</li>
+      <li>Provide word definitions in the Tap-to-Define paragraph reader (Filipino Level 5)</li>
+    </ul>
+    <p>We do not use any information for advertising, profiling, analytics tracking, or selling to third parties. Ever.</p>
+    <div class="green-box">
+      <p>&#x2705; Your progress through levels (which levels you have completed) is stored <strong>only on your device</strong> using local memory. It never leaves your phone.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="section" id="s4">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>AI & Third-Party Services</h2>
+    </div>
+    <p>Immilish uses <strong>Anthropic's Claude AI</strong> to power its coaching, question generation, and word definition features. When you interact with these features, your language learning inputs are sent to Anthropic's API over a secure HTTPS connection.</p>
+    <p>Anthropic's data handling is governed by their own Privacy Policy, available at <strong>anthropic.com/privacy</strong>. We encourage you to review it.</p>
+    <p>Immilish also loads fonts from <strong>Google Fonts</strong> (fonts.googleapis.com). This is a standard web font service and does not involve any personal data from users.</p>
+    <p>We do not use:</p>
+    <ul>
+      <li class="x">Facebook SDK or any Meta services</li>
+      <li class="x">Google Analytics or any tracking analytics</li>
+      <li class="x">Advertising networks of any kind</li>
+      <li class="x">Crash reporting services that collect device data</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 5 -->
+  <div class="section" id="s5">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>Data Storage & Security</h2>
+    </div>
+    <p>Immilish does not operate servers or databases that store user data. All of your learning progress is stored <strong>locally on your device</strong> and is cleared when you uninstall the app.</p>
+    <p>All communication between the Immilish app and Anthropic's API is encrypted using industry-standard <strong>HTTPS/TLS encryption</strong>.</p>
+    <p>We take the security of your data seriously and follow best practices to ensure that the minimal data we do transmit is protected in transit.</p>
+    <div class="highlight-box">
+      <p>&#x1F512; Because Immilish stores no personal data on our servers, there is nothing to breach. Your privacy is protected by design.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -->
+  <div class="section" id="s6">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>Children's Privacy</h2>
+    </div>
+    <p>Immilish is rated <strong>Age 4+</strong> and is designed to be safe and appropriate for users of all ages, including young children.</p>
+    <p>We are committed to complying with the <strong>Children's Online Privacy Protection Act (COPPA)</strong> and similar laws worldwide. Specifically:</p>
+    <ul>
+      <li>We do not knowingly collect personal information from children under 13</li>
+      <li>We do not require any account creation or login</li>
+      <li>There are no social features, chat functions, or user-generated content</li>
+      <li>There are no in-app purchases or links to external websites</li>
+      <li>There is no advertising of any kind</li>
+    </ul>
+    <p>If you are a parent or guardian and believe your child has submitted personal information through the app, please contact us immediately at the email address below and we will take prompt action.</p>
+    <div class="green-box">
+      <p>&#x1F9D2; Immilish was created by a young person, for people of all ages. We take children's safety and privacy more seriously than anything else.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -->
+  <div class="section" id="s7">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2>Your Rights & Choices</h2>
+    </div>
+    <p>Because Immilish does not collect or store personal data, most traditional data rights (such as the right to access, correct, or delete your data) are automatically satisfied — there is simply no personal data about you on our systems.</p>
+    <p>However, you have the following options:</p>
+    <ul>
+      <li><strong>Reset your progress:</strong> Uninstall and reinstall the app to clear all locally stored progress</li>
+      <li><strong>Opt out of AI features:</strong> Simply do not use the app — all AI features require an internet connection and can be avoided by not using those features</li>
+      <li><strong>GDPR rights (EU users):</strong> If you believe we hold any data about you and wish to exercise your rights under GDPR, contact us and we will respond within 30 days</li>
+      <li><strong>CCPA rights (California users):</strong> We do not sell personal information. California users have the right to know, delete, and opt out of the sale of personal information — none of which applies since we don't collect or sell it</li>
+    </ul>
+  </div>
+
+  <!-- SECTION 8 -->
+  <div class="section" id="s8">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2>No Ads. Ever.</h2>
+    </div>
+    <p>Immilish will never show advertisements. We will never sell your data to advertisers. We will never use your behavior to build advertising profiles.</p>
+    <p>Immilish is free to download because we believe language learning should be accessible to everyone — not because we are monetizing your attention.</p>
+    <div class="green-box">
+      <p>&#x1F31F; No ads. No tracking. No selling your data. Just learning. That is the Immilish promise.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 9 -->
+  <div class="section" id="s9">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <h2>Changes to This Policy</h2>
+    </div>
+    <p>We may update this Privacy Policy from time to time as Immilish grows and adds new features. When we make significant changes, we will update the "Last Updated" date at the top of this page.</p>
+    <p>We encourage you to review this Privacy Policy periodically. Continued use of the Immilish app after any changes to this policy constitutes your acceptance of the updated policy.</p>
+    <p>We will never make changes that reduce your privacy protections without providing clear notice.</p>
+  </div>
+
+  <!-- SECTION 10 -->
+  <div class="section" id="s10">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <h2>Contact Us</h2>
+    </div>
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy or how Immilish handles data, please contact us. We read every message and respond within 48 hours.</p>
+  </div>
+
+  <!-- CONTACT CARD -->
+  <div class="contact-card">
+    <h3>&#x1F4EC; Questions About Privacy?</h3>
+    <p>We are real people and we read every message.<br>Reach out anytime — we respond within 48 hours.</p>
+    <a class="contact-email" href="mailto:privacy@tylm.net">privacy@tylm.net</a>
+    <div class="contact-note">TYLM LLC · Immilish · United States</div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-logo">Immi<span>lish</span></div>
+  <p class="footer-sub">&#xA9; 2026 TYLM LLC &nbsp;&middot;&nbsp; All rights reserved &nbsp;&middot;&nbsp; Privacy Policy &nbsp;&middot;&nbsp; Age 4+ &nbsp;&middot;&nbsp; No Ads &nbsp;&middot;&nbsp; No Data Sold</p>
+</div>
+
+</body>
+</html>
