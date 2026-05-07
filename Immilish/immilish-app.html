@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Immilish">
+<meta name="theme-color" content="#1A237E">
+<meta name="description" content="Learn 107 languages with AI-powered coaching. 10 levels from basic words to full fluency. Free to download.">
+<title>Immilish — Learn 107 Languages</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--coral:#FF7043;--sun:#FFD54F;--mint:#66BB6A;--sky:#4FC3F7;--navy:#1A237E;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Nunito,sans-serif;background:#FFFDF7;overflow-x:hidden;}
+.screen{display:none;min-height:100vh;flex-direction:column;}
+.screen.active{display:flex;}
+
+/* PICK */
+#s1{background:linear-gradient(150deg,#E3F2FD,#FFF9C4,#FCE4EC);align-items:center;padding:28px 16px 40px;position:relative;overflow:hidden;}
+.blob{position:absolute;border-radius:50%;opacity:.12;pointer-events:none;animation:blb 7s ease-in-out infinite;}
+.b1{width:280px;height:280px;background:var(--sky);top:-80px;left:-80px;}
+.b2{width:200px;height:200px;background:var(--coral);bottom:20px;right:-50px;animation-delay:2.5s;}
+.b3{width:150px;height:150px;background:var(--mint);top:40%;left:68%;animation-delay:5s;}
+@keyframes blb{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+.inner{max-width:960px;width:100%;z-index:1;text-align:center;}
+.logo-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:8px;}
+.logo-box{width:46px;height:46px;background:var(--navy);border-radius:13px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;box-shadow:0 4px 14px rgba(26,35,126,.25);}
+.lb{height:5px;border-radius:3px;}
+.lb1{width:30px;background:var(--sky)}.lb2{width:20px;background:var(--sun)}.lb3{width:26px;background:var(--coral)}
+.logo-name{font-family:"Baloo 2",cursive;font-size:1.8rem;font-weight:800;color:var(--navy);letter-spacing:-1px;}
+.tagline{font-size:.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--coral);margin-bottom:10px;}
+.pick-h1{font-family:"Baloo 2",cursive;font-size:clamp(1.4rem,3.5vw,2.2rem);font-weight:800;color:var(--navy);margin-bottom:6px;}
+.pick-desc{font-size:.86rem;color:#546E7A;margin-bottom:16px;font-weight:600;line-height:1.6;}
+.swrap{position:relative;max-width:320px;margin:0 auto 12px;}
+.sinput{width:100%;padding:10px 16px 10px 36px;border-radius:50px;border:2.5px solid #E0E0E0;font-family:Nunito,sans-serif;font-size:.86rem;font-weight:700;color:var(--navy);outline:none;transition:border-color .2s;}
+.sinput:focus{border-color:var(--coral);}
+.sicon{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:.9rem;pointer-events:none;}
+.lv-row{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;}
+.lv-btn{padding:6px 14px;border-radius:50px;border:2.5px solid #E0E0E0;background:white;font-family:Nunito,sans-serif;font-weight:800;font-size:.73rem;color:#607D8B;cursor:pointer;transition:all .2s;}
+.lv-btn.on,.lv-btn:hover{border-color:var(--coral);color:var(--coral);background:#FFF3E0;}
+.cnt-lbl{font-size:.73rem;color:#546E7A;font-weight:800;margin-bottom:6px;}
+.cnt-lbl span{color:var(--coral);}
+.sel-lbl{font-size:.76rem;color:#546E7A;font-weight:700;margin-bottom:10px;min-height:17px;}
+.regions{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:11px;margin-bottom:16px;text-align:left;}
+.rcol{background:white;border-radius:15px;padding:11px;box-shadow:0 2px 10px rgba(0,0,0,.07);}
+.rhdr{display:flex;align-items:center;gap:6px;margin-bottom:7px;padding-bottom:6px;border-bottom:2px solid #F5F5F5;}
+.ricon{font-size:1rem;}.rname{font-family:"Baloo 2",cursive;font-size:.85rem;font-weight:800;color:var(--navy);}
+.rcnt{font-size:.58rem;font-weight:800;color:#90A4AE;margin-left:auto;background:#F5F5F5;padding:2px 6px;border-radius:20px;}
+.llist{display:flex;flex-direction:column;gap:3px;}
+.litem{display:flex;align-items:center;gap:6px;padding:5px 7px;border-radius:8px;border:2px solid transparent;cursor:pointer;transition:all .15s;background:#FAFAFA;}
+.litem:hover{border-color:var(--sky);background:#E1F5FE;transform:translateX(2px);}
+.litem.sel{border-color:var(--coral);background:#FFF3E0;}
+.lflag{font-size:1.1rem;flex-shrink:0;}
+.linfo{flex:1;min-width:0;}
+.lname{font-weight:800;color:var(--navy);font-size:.74rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lnat{font-size:.6rem;color:#90A4AE;}
+.lbadge{font-size:.5rem;background:var(--mint);color:white;border-radius:4px;padding:1px 5px;font-weight:800;flex-shrink:0;}
+.go-btn{background:var(--coral);color:white;font-family:"Baloo 2",cursive;font-size:.96rem;font-weight:800;padding:12px 38px;border-radius:50px;border:none;cursor:pointer;box-shadow:0 5px 18px rgba(255,112,67,.4);transition:transform .2s,box-shadow .2s;opacity:.4;pointer-events:none;}
+.go-btn.on{opacity:1;pointer-events:all;}
+.go-btn.on:hover{transform:translateY(-3px);}
+
+/* PATH */
+#s2{background:linear-gradient(160deg,#1A237E,#283593,#1565C0);align-items:center;}
+.phdr{width:100%;background:rgba(0,0,0,.22);padding:13px 17px;display:flex;align-items:center;gap:11px;flex-shrink:0;}
+.pbk{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);color:white;font-family:Nunito,sans-serif;font-weight:800;font-size:.74rem;padding:5px 12px;border-radius:50px;cursor:pointer;}
+.pbk:hover{background:rgba(255,255,255,.2);}
+.plang{display:flex;align-items:center;gap:8px;flex:1;}
+.pflag{font-size:1.7rem;}.pname{font-family:"Baloo 2",cursive;font-size:1.05rem;font-weight:800;color:white;}
+.pnat{font-size:.68rem;color:rgba(255,255,255,.6);font-weight:700;}
+.pbbadge{font-size:.52rem;background:var(--mint);color:white;border-radius:20px;padding:2px 7px;font-weight:800;}
+.pscroll{flex:1;overflow-y:auto;display:flex;flex-direction:column;align-items:center;padding:22px 16px 40px;}
+.pjlbl{font-size:.62rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:12px;}
+.pvc{width:4px;height:30px;border-radius:2px;background:rgba(255,255,255,.1);margin:0 auto;}
+.pvc.done{background:rgba(102,187,106,.45);}
+.plvrow{display:flex;justify-content:center;width:100%;}
+.plvnode{width:76px;height:76px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;position:relative;transition:transform .2s,box-shadow .2s;border:4px solid transparent;}
+.plvnode.locked{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1);cursor:not-allowed;}
+.plvnode.open{border-color:rgba(255,255,255,.35);animation:glo 2s infinite;}
+.plvnode.done{border-color:var(--mint);}
+.plvnode:not(.locked):hover{transform:scale(1.1);box-shadow:0 8px 22px rgba(0,0,0,.3);}
+@keyframes glo{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.2);}50%{box-shadow:0 0 0 8px rgba(255,255,255,0);}}
+.picon{font-size:1.6rem;line-height:1;}
+.plabel{font-size:.56rem;font-weight:800;color:rgba(255,255,255,.75);margin-top:2px;text-align:center;max-width:70px;}
+.plockicon{font-size:1.2rem;}
+.ptip{position:absolute;top:calc(100% + 5px);left:50%;transform:translateX(-50%);background:rgba(0,0,0,.8);color:white;font-size:.58rem;font-weight:800;padding:3px 8px;border-radius:20px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s;}
+.plvnode:hover .ptip{opacity:1;}
+.pstars{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font-size:.6rem;}
+.pmile{display:flex;flex-direction:column;align-items:center;margin:3px 0;}
+.pmilebox{width:58px;height:58px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.7rem;border:3px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);}
+.pmilel{font-size:.56rem;font-weight:800;color:rgba(255,255,255,.3);margin-top:4px;letter-spacing:1px;text-transform:uppercase;}
+
+/* LESSON */
+#s3{background:#FFFDF7;}
+.lhdr{background:var(--navy);padding:11px 17px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.lhlogo{font-family:"Baloo 2",cursive;font-size:1.15rem;font-weight:800;color:white;}
+.lhinfo{font-size:.7rem;color:rgba(255,255,255,.6);font-weight:700;}
+.lhinfo strong{color:var(--sun);}
+.exitbtn{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);color:white;font-family:Nunito,sans-serif;font-weight:800;font-size:.7rem;padding:4px 11px;border-radius:50px;cursor:pointer;}
+.exitbtn:hover{background:rgba(255,255,255,.2);}
+.progwrap{background:#E8EAF6;height:6px;}
+.progbar{height:6px;background:linear-gradient(90deg,var(--coral),var(--sun));border-radius:0 3px 3px 0;transition:width .5s ease;}
+.qpbar{display:flex;align-items:center;justify-content:center;padding:13px 17px 5px;background:white;border-bottom:2px solid #F5F5F5;overflow-x:auto;gap:0;}
+.qpn{width:29px;height:29px;border-radius:50%;border:2.5px solid #E0E0E0;background:white;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#B0BEC5;font-family:"Baloo 2",cursive;transition:all .3s;flex-shrink:0;position:relative;}
+.qpn .ql{position:absolute;top:33px;left:50%;transform:translateX(-50%);font-size:.49rem;font-weight:800;color:#90A4AE;white-space:nowrap;}
+.qpn.done{background:var(--mint);border-color:var(--mint);color:white;}
+.qpn.done .ql{color:var(--mint);}
+.qpn.cur{background:var(--coral);border-color:var(--coral);color:white;box-shadow:0 0 0 3px rgba(255,112,67,.2);}
+.qpn.cur .ql{color:var(--coral);}
+.qpc{width:20px;height:3px;background:#E0E0E0;flex-shrink:0;}
+.qpc.done{background:var(--mint);}
+.lmain{flex:1;display:flex;align-items:center;justify-content:center;padding:26px 14px 16px;}
+.qcard{background:white;border-radius:20px;padding:26px;box-shadow:0 6px 28px rgba(0,0,0,.1);max-width:640px;width:100%;animation:fup .35s ease;}
+@keyframes fup{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.qbadge{display:inline-flex;align-items:center;gap:4px;background:#F3E5F5;color:#7B1FA2;font-size:.64rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:13px;}
+.qprompt{font-family:"Baloo 2",cursive;font-size:1.25rem;font-weight:800;color:var(--navy);margin-bottom:4px;line-height:1.3;}
+.qmeta{font-size:.78rem;color:#90A4AE;margin-bottom:18px;font-weight:600;}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.cbtn{background:#F8F9FA;border:2.5px solid #E0E0E0;border-radius:12px;padding:11px 13px;font-family:Nunito,sans-serif;font-size:.84rem;font-weight:700;color:var(--navy);cursor:pointer;text-align:left;transition:all .2s;display:flex;align-items:flex-start;gap:7px;line-height:1.35;}
+.cbtn:hover:not(:disabled){border-color:var(--sky);background:#E1F5FE;transform:translateY(-1px);}
+.cbtn.ok{border-color:var(--mint);background:#E8F5E9;color:#2E7D32;}
+.cbtn.no{border-color:var(--coral);background:#FBE9E7;color:#C62828;}
+.cbtn:disabled{cursor:default;}
+.cletter{width:21px;height:21px;border-radius:6px;background:white;border:2px solid #E0E0E0;display:flex;align-items:center;justify-content:center;font-size:.66rem;font-weight:800;flex-shrink:0;margin-top:1px;}
+.cbtn.ok .cletter{background:var(--mint);border-color:var(--mint);color:white;}
+.cbtn.no .cletter{background:var(--coral);border-color:var(--coral);color:white;}
+.tinput{width:100%;padding:11px 15px;font-family:Nunito,sans-serif;font-size:.94rem;font-weight:700;border:2.5px solid #E0E0E0;border-radius:12px;outline:none;color:var(--navy);transition:border-color .2s;}
+.tinput:focus{border-color:var(--sky);}
+.tinput.ok{border-color:var(--mint);background:#E8F5E9;}
+.tinput.no{border-color:var(--coral);background:#FBE9E7;}
+.hinttxt{font-size:.72rem;color:#90A4AE;margin-top:5px;font-weight:700;}
+.subbtn{margin-top:9px;width:100%;padding:10px;border-radius:12px;border:none;background:var(--navy);color:white;font-family:"Baloo 2",cursive;font-size:.88rem;font-weight:800;cursor:pointer;transition:transform .2s,background .2s;}
+.subbtn:hover{transform:translateY(-1px);background:#283593;}
+.aibox{margin-top:14px;border-radius:14px;padding:13px 16px;border:2px solid rgba(255,112,67,.2);background:linear-gradient(135deg,#FFF3E0,#FFF8E1);display:none;}
+.aibox.show{display:block;animation:fup .3s ease;}
+.aihdr{display:flex;align-items:center;gap:7px;margin-bottom:7px;}
+.aiav{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--coral),var(--sun));display:flex;align-items:center;justify-content:center;font-size:.82rem;flex-shrink:0;}
+.aittl{font-weight:800;color:var(--navy);font-size:.8rem;}
+.aisub{font-size:.6rem;color:#90A4AE;font-weight:700;}
+.aimsg{font-size:.84rem;color:#37474F;line-height:1.7;font-weight:600;}
+.aimsg .hl{color:var(--coral);font-weight:800;}
+.dots{display:flex;gap:4px;align-items:center;padding:3px 0;}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--coral);animation:bnc .9s infinite;}
+.dot:nth-child(2){animation-delay:.15s}.dot:nth-child(3){animation-delay:.3s}
+@keyframes bnc{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.nxtbtn{margin-top:10px;width:100%;padding:10px;border-radius:12px;border:none;background:var(--coral);color:white;font-family:"Baloo 2",cursive;font-size:.88rem;font-weight:800;cursor:pointer;transition:all .2s;display:none;}
+.nxtbtn.show{display:block;}
+.nxtbtn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(255,112,67,.4);}
+
+/* PARA READER */
+.ptitle{font-family:"Baloo 2",cursive;font-size:.92rem;font-weight:800;color:var(--navy);margin-bottom:3px;}
+.pauth{font-size:.66rem;color:#90A4AE;font-weight:700;margin-bottom:10px;}
+.phint{font-size:.72rem;color:var(--sky);font-weight:800;text-align:center;margin-bottom:7px;animation:pls 2s infinite;}
+@keyframes pls{0%,100%{opacity:1}50%{opacity:.5}}
+.pbody{font-size:.97rem;line-height:2;color:#37474F;font-weight:600;background:#F8F9FA;border-radius:11px;padding:14px 16px;border:2px solid #E0E0E0;margin-bottom:10px;}
+.tw{display:inline;cursor:pointer;border-radius:3px;padding:1px 2px;transition:background .15s;border-bottom:2px dotted var(--sky);}
+.tw:hover{background:#E1F5FE;}
+.tw.tapped{background:var(--sun);font-weight:800;border-bottom-color:var(--coral);}
+.wrow{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;}
+.wchip{font-size:.64rem;background:#E8F5E9;color:#2E7D32;border-radius:20px;padding:2px 8px;font-weight:800;}
+.pqlbl{font-size:.76rem;font-weight:800;color:var(--navy);margin-bottom:8px;}
+
+/* POPUP */
+.popov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:998;}
+.wdpop{position:fixed;bottom:0;left:0;right:0;background:white;border-radius:20px 20px 0 0;padding:16px 20px 28px;box-shadow:0 -5px 24px rgba(0,0,0,.16);z-index:999;transform:translateY(100%);transition:transform .3s cubic-bezier(.34,1.1,.64,1);max-height:52vh;overflow-y:auto;}
+.wdpop.open{transform:translateY(0);}
+.pophandle{width:34px;height:3px;background:#E0E0E0;border-radius:2px;margin:0 auto 12px;}
+.popclose{position:absolute;top:12px;right:16px;background:#F5F5F5;border:none;width:26px;height:26px;border-radius:50%;font-size:.85rem;cursor:pointer;}
+.popword{font-family:"Baloo 2",cursive;font-size:1.6rem;font-weight:800;color:var(--navy);margin-bottom:3px;}
+.poppron{font-size:.76rem;color:#90A4AE;font-weight:700;margin-bottom:9px;}
+.popdef{font-size:.88rem;color:#37474F;line-height:1.7;font-weight:600;margin-bottom:9px;}
+.popex{font-size:.82rem;color:#546E7A;font-style:italic;background:#F8F9FA;border-radius:8px;padding:8px 12px;border-left:3px solid var(--coral);display:none;}
+
+/* RESULTS */
+#s4{background:linear-gradient(160deg,#1A237E,#283593);align-items:center;justify-content:center;padding:32px 14px;}
+.rcard{background:white;border-radius:24px;padding:36px 28px;max-width:440px;width:100%;text-align:center;box-shadow:0 16px 50px rgba(0,0,0,.24);}
+.rtrophy{font-size:3.4rem;margin-bottom:11px;animation:pi .6s cubic-bezier(.34,1.56,.64,1);}
+@keyframes pi{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+.rbadge{background:linear-gradient(135deg,var(--coral),#FF8A65);color:white;border-radius:50px;padding:6px 17px;font-weight:800;font-size:.8rem;display:inline-block;margin-bottom:11px;}
+.rtitle{font-family:"Baloo 2",cursive;font-size:1.65rem;font-weight:800;color:var(--navy);margin-bottom:5px;}
+.rsub{color:#546E7A;font-size:.86rem;margin-bottom:20px;font-weight:600;line-height:1.6;}
+.rstats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:20px;}
+.sbox{background:#F8F9FA;border-radius:11px;padding:12px 6px;}
+.snum{font-family:"Baloo 2",cursive;font-size:1.65rem;font-weight:800;color:var(--coral);}
+.slbl{font-size:.63rem;font-weight:800;color:#90A4AE;text-transform:uppercase;letter-spacing:1px;margin-top:2px;}
+.rbtn{width:100%;padding:12px;border-radius:50px;border:none;background:var(--coral);color:white;font-family:"Baloo 2",cursive;font-size:.92rem;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(255,112,67,.4);transition:all .2s;margin-bottom:8px;}
+.rbtn:hover{transform:translateY(-2px);}
+.rbtn2{width:100%;padding:10px;border-radius:50px;border:2.5px solid var(--navy);background:transparent;color:var(--navy);font-family:"Baloo 2",cursive;font-size:.86rem;font-weight:800;cursor:pointer;transition:all .2s;}
+.rbtn2:hover{background:var(--navy);color:white;}
+.cpiece{position:fixed;border-radius:2px;animation:cfll linear forwards;z-index:9999;pointer-events:none;}
+@keyframes cfll{to{transform:translateY(110vh)rotate(720deg);opacity:0}}
+@media(max-width:500px){.choices{grid-template-columns:1fr}.rstats{grid-template-columns:1fr 1fr}.regions{grid-template-columns:1fr 1fr}}
+
+/* ── CONVERSATION BUDDY ── */
+.convo-wrap{display:flex;flex-direction:column;gap:14px;}
+.buddy-row{display:flex;align-items:flex-end;gap:10px;margin-bottom:4px;}
+.buddy-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#FF7043,#FFD54F);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;box-shadow:0 3px 10px rgba(255,112,67,.3);}
+.buddy-bubble{background:linear-gradient(135deg,#E3F2FD,#EDE7F6);border-radius:18px 18px 18px 4px;padding:12px 16px;max-width:80%;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.buddy-name{font-size:.62rem;font-weight:800;color:#7B1FA2;margin-bottom:3px;text-transform:uppercase;letter-spacing:1px;}
+.buddy-text{font-size:.95rem;font-weight:700;color:#1A237E;line-height:1.45;}
+.buddy-translation{font-size:.72rem;color:#90A4AE;font-weight:600;margin-top:3px;font-style:italic;}
+.convo-instruction{font-size:.78rem;font-weight:800;color:#546E7A;text-align:center;padding:6px 0;background:#F8F9FA;border-radius:10px;margin:4px 0;}
+.drop-zone{min-height:46px;border:2.5px dashed #B0BEC5;border-radius:14px;padding:8px 10px;display:flex;flex-wrap:wrap;gap:7px;align-items:center;background:#FAFAFA;transition:border-color .2s,background .2s;position:relative;}
+.drop-zone.drag-over{border-color:var(--coral);background:#FFF3E0;}
+.drop-zone.correct-zone{border-color:var(--mint);background:#E8F5E9;}
+.drop-zone.wrong-zone{border-color:var(--coral);background:#FBE9E7;}
+.drop-placeholder{font-size:.78rem;color:#B0BEC5;font-weight:700;pointer-events:none;position:absolute;left:12px;}
+.word-bank{display:flex;flex-wrap:wrap;gap:7px;padding:4px 0;}
+.word-tile{background:white;border:2.5px solid #E0E0E0;border-radius:10px;padding:7px 13px;font-size:.88rem;font-weight:800;color:#1A237E;cursor:grab;transition:all .18s;user-select:none;box-shadow:0 2px 6px rgba(0,0,0,.08);}
+.word-tile:hover{border-color:var(--sky);background:#E1F5FE;transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.12);}
+.word-tile.dragging{opacity:.4;transform:scale(.95);}
+.word-tile.placed{background:linear-gradient(135deg,#1A237E,#283593);color:white;border-color:#1A237E;cursor:grab;}
+.word-tile.placed:hover{background:linear-gradient(135deg,#283593,#3949AB);transform:translateY(-2px);}
+.word-tile.correct-tile{background:linear-gradient(135deg,#388E3C,#66BB6A);color:white;border-color:var(--mint);cursor:default;}
+.word-tile.wrong-tile{background:linear-gradient(135deg,#C62828,#FF7043);color:white;border-color:var(--coral);cursor:default;}
+.convo-check-btn{width:100%;padding:11px;border-radius:13px;border:none;background:var(--navy);color:white;font-family:"Baloo 2",cursive;font-size:.9rem;font-weight:800;cursor:pointer;transition:transform .2s,background .2s;margin-top:4px;}
+.convo-check-btn:hover{transform:translateY(-1px);background:#283593;}
+.convo-check-btn:disabled{opacity:.5;cursor:default;transform:none;}
+.correct-answer-show{font-size:.78rem;color:#2E7D32;font-weight:800;background:#E8F5E9;border-radius:8px;padding:6px 10px;margin-top:4px;}
+.level-label-badge{display:inline-block;background:linear-gradient(135deg,var(--coral),var(--sun));color:white;font-family:"Baloo 2",cursive;font-size:.72rem;font-weight:800;padding:3px 12px;border-radius:20px;margin-bottom:10px;}
+.essay-prompt{background:linear-gradient(135deg,#E8EAF6,#EDE7F6);border-radius:14px;padding:16px;margin-bottom:12px;border-left:4px solid var(--lav);}
+.essay-prompt .ep-label{font-size:.68rem;font-weight:800;color:#7B1FA2;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;}
+.essay-prompt .ep-text{font-size:.92rem;font-weight:700;color:var(--navy);line-height:1.5;}
+.essay-prompt .ep-en{font-size:.76rem;color:#90A4AE;font-weight:600;margin-top:3px;font-style:italic;}
+.textarea-input{width:100%;padding:12px 15px;font-family:Nunito,sans-serif;font-size:.9rem;font-weight:600;border:2.5px solid #E0E0E0;border-radius:13px;outline:none;color:var(--navy);min-height:90px;resize:vertical;transition:border-color .2s;line-height:1.6;}
+.textarea-input:focus{border-color:var(--sky);}
+.textarea-input.ok{border-color:var(--mint);background:#E8F5E9;}
+.scr-textarea{min-height:160px;}
+.word-count-hint{font-size:.7rem;color:#90A4AE;font-weight:700;margin-top:4px;text-align:right;}
+.lv-btn{font-size:.65rem !important;}
+.tap-w{display:inline;cursor:pointer;border-radius:3px;padding:1px 2px;transition:background .15s;border-bottom:2px dotted var(--sky);}
+.tap-w:hover{background:#E1F5FE;}
+.tap-w.tapped{background:var(--sun);font-weight:800;border-bottom-color:var(--coral);}
+</style>
+</head>
+<body>
+
+<!-- SCREEN 1: PICK -->
+<div id="s1" class="screen active">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="inner">
+    <div class="logo-row">
+      <div class="logo-box"><div class="lb lb1"></div><div class="lb lb2"></div><div class="lb lb3"></div></div>
+      <div class="logo-name" style="font-family:'Baloo 2',cursive;font-weight:800;">Immi<span style="color:var(--coral)">lish</span></div>
+    </div>
+    <div class="tagline">AI-Powered Language Learning</div>
+    <h1 class="pick-h1">Choose Your Language &amp; Level</h1>
+    <p class="pick-desc">90+ languages organized by region. <strong style="color:var(--mint)">Green</strong> = full question bank!</p>
+    <div class="swrap">
+      <span class="sicon">&#x1F50D;</span>
+      <input class="sinput" id="srch" placeholder="Type to search languages..." oninput="doSearch(this.value)">
+    </div>
+    <div class="lv-row">
+      <button class="lv-btn on" data-lv="1" onclick="pickLv(this)">&#x1F524; L1 Basic Words</button>
+      <button class="lv-btn" data-lv="2" onclick="pickLv(this)">&#x1F4AC; L2 Phrases</button>
+      <button class="lv-btn" data-lv="3" onclick="pickLv(this)">&#x1F5E3; L3 Conversations</button>
+      <button class="lv-btn" data-lv="4" onclick="pickLv(this)">&#x1F4DD; L4 Grammar</button>
+      <button class="lv-btn" data-lv="5" onclick="pickLv(this)">&#x1F91D; L5 Introducing</button>
+      <button class="lv-btn" data-lv="6" onclick="pickLv(this)">&#x1F504; L6 Translation</button>
+      <button class="lv-btn" data-lv="7" onclick="pickLv(this)">&#x1F4CB; L7 Summaries</button>
+      <button class="lv-btn" data-lv="8" onclick="pickLv(this)">&#x1F4C4; L8 Paragraph</button>
+      <button class="lv-btn" data-lv="9" onclick="pickLv(this)">&#x1F310; L9 Communicate</button>
+      <button class="lv-btn" data-lv="10" onclick="pickLv(this)">&#x1F4DC; L10 Full SCR</button>
+    </div>
+    <div class="cnt-lbl">Showing <span id="cnt">0</span> languages &#8212; more added each update!</div>
+    <div class="sel-lbl" id="selLbl">No language selected yet &#8212; pick one below!</div>
+    <div class="regions" id="regWrap"></div>
+    <button class="go-btn" id="goBtn" onclick="goPath()">Choose Your Level! &#x1F5FA;</button>
+  </div>
+</div>
+
+<!-- SCREEN 2: PATH -->
+<div id="s2" class="screen">
+  <div class="phdr">
+    <button class="pbk" onclick="show(1)">&#x2190; Back</button>
+    <div class="plang">
+      <span class="pflag" id="pf">&#x1F30D;</span>
+      <div><div class="pname" id="pn">Language</div><div class="pnat" id="pv">native</div></div>
+      <span class="pbbadge" id="pb" style="display:none">&#x2713; Full Bank</span>
+    </div>
+  </div>
+  <div class="pscroll"><div id="pathDiv"></div></div>
+</div>
+
+<!-- SCREEN 3: LESSON -->
+<div id="s3" class="screen">
+  <div class="lhdr">
+    <div class="lhlogo" style="font-family:'Baloo 2',cursive;font-weight:800;">Immi<span style="color:var(--coral)">lish</span></div>
+    <div class="lhinfo">Learning <strong id="lln">-</strong> &middot; Level <strong id="llv">-</strong></div>
+    <button class="exitbtn" onclick="show(1)">&#x2715; Exit</button>
+  </div>
+  <div class="progwrap"><div class="progbar" id="pgbar" style="width:0%"></div></div>
+  <div class="qpbar" id="qpbar"></div>
+  <div class="lmain"><div class="qcard" id="qcard"></div></div>
+</div>
+
+<!-- SCREEN 4: RESULTS -->
+<div id="s4" class="screen">
+  <div class="rcard">
+    <div class="rtrophy" id="rtr">&#x1F3C6;</div>
+    <div class="rbadge" id="rbg">-</div>
+    <div class="rtitle" id="rti">Lesson Complete!</div>
+    <div class="rsub" id="rsb">Great work!</div>
+    <div class="rstats">
+      <div class="sbox"><div class="snum" id="sc">-</div><div class="slbl">Score</div></div>
+      <div class="sbox"><div class="snum" id="sco">-</div><div class="slbl">Correct</div></div>
+      <div class="sbox"><div class="snum" id="sst">-</div><div class="slbl">Streak &#x1F525;</div></div>
+    </div>
+    <button class="rbtn" id="nxtbtn" onclick="doNext()">Continue &#x1F5FA;</button>
+    <button class="rbtn" style="background:var(--navy);box-shadow:none;margin-bottom:8px;" onclick="startLesson()">Try Again &#x1F504;</button>
+    <button class="rbtn2" onclick="show(1)">&#x2190; Choose Another Language</button>
+  </div>
+</div>
+
+<!-- WORD POPUP -->
+<div class="popov" id="pov" onclick="closePop()"></div>
+<div class="wdpop" id="wpop">
+  <div class="pophandle"></div>
+  <button class="popclose" onclick="closePop()">&#x2715;</button>
+  <div class="popword" id="pww">-</div>
+  <div class="poppron" id="pwp"></div>
+  <div class="popdef" id="pwd"><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div>
+  <div class="popex" id="pwe"></div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════
+// LANGUAGE DATA
+// ═══════════════════════════════════════════════════
+const REGIONS = [
+  {id:'americas', label:'Americas',            icon:'🌎'},
+  {id:'europe',   label:'Europe',              icon:'🌍'},
+  {id:'asia',     label:'Asia',                icon:'🌏'},
+  {id:'mideast',  label:'Middle East',         icon:'🕌'},
+  {id:'africa',   label:'Africa',              icon:'🌍'},
+  {id:'sacred',   label:'Sacred & Classical',  icon:'🛐'},
+];
+
+const LANGS = [
+  // Americas
+  {f:'🇺🇸',n:'English',v:'English',c:'americas',b:1},
+  {f:'🇪🇸',n:'Spanish',v:'Español',c:'americas',b:1},
+  {f:'🇧🇷',n:'Portuguese',v:'Português',c:'americas',b:1},
+  {f:'🇲🇽',n:'Mexican Spanish',v:'Español MX',c:'americas'},
+  {f:'🇨🇦',n:'Canadian French',v:'Français CA',c:'americas'},
+  {f:'🇭🇹',n:'Haitian Creole',v:'Kreyòl',c:'americas'},
+  {f:'🇯🇲',n:'Jamaican Patois',v:'Patois',c:'americas'},
+  {f:'🇵🇪',n:'Quechua',v:'Runa Simi',c:'americas'},
+  {f:'🇬🇹',n:'Guatemalan Spanish',v:'Español GT',c:'americas'},
+  {f:'🇨🇺',n:'Cuban Spanish',v:'Español CU',c:'americas'},
+  {f:'🇩🇴',n:'Dominican Spanish',v:'Español DO',c:'americas'},
+  {f:'🇧🇴',n:'Aymara',v:'Aymar aru',c:'americas'},
+  {f:'🇲🇽',n:'Nahuatl',v:'Nāhuatl',c:'americas'},
+  // Europe
+  {f:'🇫🇷',n:'French',v:'Français',c:'europe',b:1},
+  {f:'🇩🇪',n:'German',v:'Deutsch',c:'europe',b:1},
+  {f:'🇮🇹',n:'Italian',v:'Italiano',c:'europe',b:1},
+  {f:'🇷🇺',n:'Russian',v:'Русский',c:'europe',b:1},
+  {f:'🇵🇱',n:'Polish',v:'Polski',c:'europe'},
+  {f:'🇳🇱',n:'Dutch',v:'Nederlands',c:'europe'},
+  {f:'🇸🇪',n:'Swedish',v:'Svenska',c:'europe'},
+  {f:'🇳🇴',n:'Norwegian',v:'Norsk',c:'europe'},
+  {f:'🇩🇰',n:'Danish',v:'Dansk',c:'europe'},
+  {f:'🇫🇮',n:'Finnish',v:'Suomi',c:'europe'},
+  {f:'🇨🇿',n:'Czech',v:'Čeština',c:'europe'},
+  {f:'🇷🇴',n:'Romanian',v:'Română',c:'europe'},
+  {f:'🇭🇺',n:'Hungarian',v:'Magyar',c:'europe'},
+  {f:'🇺🇦',n:'Ukrainian',v:'Українська',c:'europe'},
+  {f:'🇧🇦',n:'Bosnian',v:'Bosanski',c:'europe'},
+  {f:'🇭🇷',n:'Croatian',v:'Hrvatski',c:'europe'},
+  {f:'🇸🇰',n:'Slovak',v:'Slovenčina',c:'europe'},
+  {f:'🇧🇬',n:'Bulgarian',v:'Български',c:'europe'},
+  {f:'🇷🇸',n:'Serbian',v:'Српски',c:'europe'},
+  {f:'🇱🇹',n:'Lithuanian',v:'Lietuvių',c:'europe'},
+  {f:'🇱🇻',n:'Latvian',v:'Latviešu',c:'europe'},
+  {f:'🇪🇪',n:'Estonian',v:'Eesti',c:'europe'},
+  {f:'🏴',n:'Welsh',v:'Cymraeg',c:'europe'},
+  {f:'🇮🇪',n:'Irish',v:'Gaeilge',c:'europe'},
+  {f:'🇲🇹',n:'Maltese',v:'Malti',c:'europe'},
+  {f:'🇦🇱',n:'Albanian',v:'Shqip',c:'europe'},
+  {f:'🇬🇷',n:'Greek',v:'Ελληνικά',c:'europe'},
+  {f:'🇪🇸',n:'Catalan',v:'Català',c:'europe'},
+  {f:'🇪🇸',n:'Basque',v:'Euskara',c:'europe'},
+  {f:'🇲🇰',n:'Macedonian',v:'Македонски',c:'europe'},
+  {f:'🇵🇹',n:'Galician',v:'Galego',c:'europe'},
+  // Asia
+  {f:'🇨🇳',n:'Mandarin Chinese',v:'普通话',c:'asia',b:1},
+  {f:'🇯🇵',n:'Japanese',v:'日本語',c:'asia',b:1},
+  {f:'🇰🇷',n:'Korean',v:'한국어',c:'asia',b:1},
+  {f:'🇮🇳',n:'Hindi',v:'हिन्दी',c:'asia',b:1},
+  {f:'🇻🇳',n:'Vietnamese',v:'Tiếng Việt',c:'asia',b:1},
+  {f:'🇵🇭',n:'Filipino',v:'Filipino',c:'asia',b:1},
+  {f:'🇮🇳',n:'Bengali',v:'বাংলা',c:'asia'},
+  {f:'🇮🇳',n:'Tamil',v:'தமிழ்',c:'asia'},
+  {f:'🇮🇳',n:'Telugu',v:'తెలుగు',c:'asia'},
+  {f:'🇮🇳',n:'Gujarati',v:'ગુજરાતી',c:'asia'},
+  {f:'🇮🇳',n:'Punjabi',v:'ਪੰਜਾਬੀ',c:'asia'},
+  {f:'🇮🇳',n:'Kannada',v:'ಕನ್ನಡ',c:'asia'},
+  {f:'🇮🇳',n:'Malayalam',v:'മലയാളം',c:'asia'},
+  {f:'🇮🇳',n:'Marathi',v:'मराठी',c:'asia'},
+  {f:'🇮🇩',n:'Indonesian',v:'Bahasa Indonesia',c:'asia'},
+  {f:'🇹🇭',n:'Thai',v:'ภาษาไทย',c:'asia'},
+  {f:'🇲🇾',n:'Malay',v:'Bahasa Melayu',c:'asia'},
+  {f:'🇵🇰',n:'Urdu',v:'اردو',c:'asia'},
+  {f:'🇱🇰',n:'Sinhala',v:'සිංහල',c:'asia'},
+  {f:'🇳🇵',n:'Nepali',v:'नेपाली',c:'asia'},
+  {f:'🇲🇲',n:'Burmese',v:'ဗမာစာ',c:'asia'},
+  {f:'🇰🇭',n:'Khmer',v:'ភាសាខ្មែរ',c:'asia'},
+  {f:'🇱🇦',n:'Lao',v:'ພາສາລາວ',c:'asia'},
+  {f:'🇲🇳',n:'Mongolian',v:'Монгол хэл',c:'asia'},
+  {f:'🇺🇿',n:'Uzbek',v:"O'zbek",c:'asia'},
+  {f:'🇰🇿',n:'Kazakh',v:'Қазақша',c:'asia'},
+  {f:'🇦🇫',n:'Pashto',v:'پښتو',c:'asia'},
+  // Middle East
+  {f:'🇸🇦',n:'Arabic',v:'العربية',c:'mideast',b:1},
+  {f:'🇮🇷',n:'Persian (Farsi)',v:'فارسی',c:'mideast'},
+  {f:'🇮🇱',n:'Hebrew',v:'עברית',c:'mideast'},
+  {f:'🇹🇷',n:'Turkish',v:'Türkçe',c:'mideast'},
+  {f:'🇦🇿',n:'Azerbaijani',v:'Azərbaycan',c:'mideast'},
+  {f:'🇬🇪',n:'Georgian',v:'ქართული',c:'mideast'},
+  {f:'🇦🇲',n:'Armenian',v:'Հայերեն',c:'mideast'},
+  {f:'🇾🇪',n:'Yemeni Arabic',v:'عربي يمني',c:'mideast'},
+  {f:'🇮🇶',n:'Iraqi Arabic',v:'عربي عراقي',c:'mideast'},
+  {f:'🇱🇧',n:'Lebanese Arabic',v:'عربي لبناني',c:'mideast'},
+  {f:'🇸🇾',n:'Syrian Arabic',v:'عربي سوري',c:'mideast'},
+  {f:'🇰🇼',n:'Kuwaiti Arabic',v:'عربي كويتي',c:'mideast'},
+  // Africa
+  {f:'🇰🇪',n:'Swahili',v:'Kiswahili',c:'africa'},
+  {f:'🇳🇬',n:'Yoruba',v:'Yorùbá',c:'africa'},
+  {f:'🇳🇬',n:'Hausa',v:'Harshen Hausa',c:'africa'},
+  {f:'🇳🇬',n:'Igbo',v:'Igbo',c:'africa'},
+  {f:'🇿🇦',n:'Zulu',v:'isiZulu',c:'africa'},
+  {f:'🇿🇦',n:'Afrikaans',v:'Afrikaans',c:'africa'},
+  {f:'🇪🇹',n:'Amharic',v:'አማርኛ',c:'africa'},
+  {f:'🇸🇳',n:'Wolof',v:'Wolof',c:'africa'},
+  {f:'🇬🇭',n:'Twi',v:'Twi',c:'africa'},
+  {f:'🇲🇬',n:'Malagasy',v:'Malagasy',c:'africa'},
+  {f:'🇸🇴',n:'Somali',v:'Soomaali',c:'africa'},
+  {f:'🇷🇼',n:'Kinyarwanda',v:'Ikinyarwanda',c:'africa'},
+  {f:'🇿🇼',n:'Shona',v:'ChiShona',c:'africa'},
+  {f:'🇨🇩',n:'Lingala',v:'Lingála',c:'africa'},
+  {f:'🇿🇦',n:'Xhosa',v:'isiXhosa',c:'africa'},
+  {f:'🇪🇹',n:'Oromo',v:'Afaan Oromoo',c:'africa'},
+  // Sacred
+  {f:'🏛️',n:'Latin',v:'Lingua Latina',c:'sacred'},
+  {f:'📜',n:'Biblical Greek',v:'Ἑλληνική',c:'sacred'},
+  {f:'📖',n:'Biblical Hebrew',v:'עִבְרִית',c:'sacred'},
+  {f:'🕌',n:'Classical Arabic',v:'الفصحى',c:'sacred'},
+  {f:'🕉️',n:'Sanskrit',v:'संस्कृत',c:'sacred'},
+  {f:'☸️',n:'Pali',v:'Pāḷi',c:'sacred'},
+  {f:'✝️',n:'Aramaic',v:'ܐܪܡܝܐ',c:'sacred'},
+];
+
+// ═══════════════════════════════════════════════════
+// QUESTION BANKS
+// ═══════════════════════════════════════════════════
+const BANKS = {};
+
+BANKS['Spanish'] = {
+  1:[
+    {t:'mc',p:'How do you say "Hello" in Spanish?',a:'Hola (Hello)',cs:['Hola (Hello)','Adiós (Goodbye)','Gracias (Thank you)','Por favor (Please)']},
+    {t:'mc',p:'How do you say "Goodbye" in Spanish?',a:'Adiós (Goodbye)',cs:['Hola (Hello)','Adiós (Goodbye)','Sí (Yes)','No (No)']},
+    {t:'mc',p:'What is "Cat" in Spanish?',a:'Gato (Cat)',cs:['Perro (Dog)','Gato (Cat)','Pájaro (Bird)','Pez (Fish)']},
+    {t:'mc',p:'What is "Water" in Spanish?',a:'Agua (Water)',cs:['Fuego (Fire)','Tierra (Earth)','Agua (Water)','Aire (Air)']},
+    {t:'mc',p:'What is "Red" in Spanish?',a:'Rojo (Red)',cs:['Azul (Blue)','Verde (Green)','Rojo (Red)','Amarillo (Yellow)']},
+    {t:'mc',p:'What is "House" in Spanish?',a:'Casa (House)',cs:['Casa (House)','Carro (Car)','Escuela (School)','Parque (Park)']},
+    {t:'mc',p:'What is "Dog" in Spanish?',a:'Perro (Dog)',cs:['Gato (Cat)','Perro (Dog)','Caballo (Horse)','Conejo (Rabbit)']},
+    {t:'mc',p:'What is "Sun" in Spanish?',a:'Sol (Sun)',cs:['Luna (Moon)','Sol (Sun)','Estrella (Star)','Nube (Cloud)']},
+    {t:'type',p:'Type the Spanish word for "Thank you":',a:'gracias',h:'Starts with G'},
+    {t:'type',p:'Type the Spanish word for "Yes":',a:'sí',h:'2 letters'},
+  ],
+  2:[
+    {t:'mc',p:'How do you say "How are you?" in Spanish?',a:'¿Cómo estás? (How are you?)',cs:['¿Cómo estás? (How are you?)','¿Cómo te llamas? (What is your name?)','¿Dónde estás? (Where are you?)','¿Cuántos años tienes? (How old are you?)']},
+    {t:'mc',p:'How do you say "Good morning" in Spanish?',a:'Buenos días (Good morning)',cs:['Buenas noches (Good night)','Buenas tardes (Good afternoon)','Buenos días (Good morning)','Hasta luego (See you later)']},
+    {t:'mc',p:'How do you say "Please" in Spanish?',a:'Por favor (Please)',cs:['Gracias (Thank you)','Por favor (Please)','Lo siento (I am sorry)','De nada (You are welcome)']},
+    {t:'mc',p:'How do you say "I am hungry" in Spanish?',a:'Tengo hambre (I am hungry)',cs:['Tengo hambre (I am hungry)','Tengo sed (I am thirsty)','Tengo frío (I am cold)','Tengo sueño (I am sleepy)']},
+    {t:'mc',p:'How do you say "You are welcome" in Spanish?',a:'De nada (You are welcome)',cs:['Lo siento (I am sorry)','De nada (You are welcome)','Por favor (Please)','Perdón (Excuse me)']},
+    {t:'mc',p:'How do you say "Good night" in Spanish?',a:'Buenas noches (Good night)',cs:['Buenas noches (Good night)','Buenos días (Good morning)','Buenas tardes (Good afternoon)','Hasta mañana (See you tomorrow)']},
+    {t:'mc',p:'How do you say "Nice to meet you" in Spanish?',a:'Mucho gusto (Nice to meet you)',cs:['Mucho gusto (Nice to meet you)','¿Cómo estás? (How are you?)','Hasta luego (See you later)','Bienvenido (Welcome)']},
+    {t:'type',p:'Type "I love you" in Spanish:',a:'te amo',h:'Two words'},
+  ],
+  3:[
+    {t:'convo',buddy:'Sofia',lang:'Spanish',avatar:'👧🏽',
+     chat:'¡Hola! ¿Cómo te llamas?',chatEn:'Hi! What is your name?',
+     prompt:'Reply: "My name is Maria and I am from Mexico"',
+     words:['me','llamo','María','y','soy','de','México'],
+     extraWords:['tengo','bien','gracias','hola'],
+     answer:['me','llamo','María','y','soy','de','México']},
+    {t:'convo',buddy:'Carlos',lang:'Spanish',avatar:'👦🏻',
+     chat:'¿Tienes hambre? ¿Quieres comer algo?',chatEn:'Are you hungry? Do you want to eat something?',
+     prompt:'Reply: "Yes, I want to eat tacos please"',
+     words:['Sí','quiero','comer','tacos','por','favor'],
+     extraWords:['No','hambre','beber','agua'],
+     answer:['Sí','quiero','comer','tacos','por','favor']},
+    {t:'convo',buddy:'Sofia',lang:'Spanish',avatar:'👧🏽',
+     chat:'¿Dónde está la biblioteca?',chatEn:'Where is the library?',
+     prompt:'Reply: "The library is on the left, next to the park"',
+     words:['La','biblioteca','está','a','la','izquierda','del','parque'],
+     extraWords:['derecha','arriba','lejos','cerca'],
+     answer:['La','biblioteca','está','a','la','izquierda','del','parque']},
+    {t:'mc',p:'How do you say "Where is the bathroom?" in Spanish?',a:'¿Dónde está el baño? (Where is the bathroom?)',cs:['¿Dónde está el baño? (Where is the bathroom?)','¿Dónde está la tienda? (Where is the store?)','¿Qué hora es? (What time is it?)','¿Cuánto cuesta? (How much?)']},
+    {t:'mc',p:'How do you say "I would like a coffee" in Spanish?',a:'Me gustaría un café (I would like a coffee)',cs:['Tengo un café (I have a coffee)','Me gustaría un café (I would like a coffee)','Bebo café (I drink coffee)','¿Tienes café? (Do you have coffee?)']},
+    {t:'mc',p:'How do you say "Can you help me?" in Spanish?',a:'¿Puedes ayudarme? (Can you help me?)',cs:['¿Puedes ayudarme? (Can you help me?)','¿Dónde vives? (Where do you live?)','¿Cómo se llama? (What is his name?)','¿Qué pasa? (What is happening?)']},
+    {t:'mc',p:'How do you say "What time is it?" in Spanish?',a:'¿Qué hora es? (What time is it?)',cs:['¿Qué hora es? (What time is it?)','¿Qué día es hoy? (What day is today?)','¿Cuánto cuesta? (How much?)','¿Dónde estamos? (Where are we?)']},
+    {t:'mc',p:'How do you say "I am learning Spanish"?',a:'Estoy aprendiendo español (I am learning Spanish)',cs:['Estoy aprendiendo español (I am learning Spanish)','Hablo español perfecto (I speak perfect Spanish)','No sé español (I do not know Spanish)','Estudio mucho (I study a lot)']},
+    {t:'mc',p:'How do you say "Delicious!" in Spanish?',a:'¡Delicioso! (Delicious!)',cs:['¡Delicioso! (Delicious!)','¡Increíble! (Incredible!)','¡Perfecto! (Perfect!)','¡Genial! (Great!)']},
+    {t:'type',p:'Type "I do not understand" in Spanish:',a:'no entiendo',h:'Two words'},
+    {t:'type',p:'Type "I am from America" in Spanish:',a:'soy de América',h:'Starts with soy'},
+  ],
+};
+
+BANKS['French'] = {
+  1:[
+    {t:'mc',p:'How do you say "Hello" in French?',a:'Bonjour (Hello)',cs:['Bonjour (Hello)','Au revoir (Goodbye)','Merci (Thank you)','Excusez-moi (Excuse me)']},
+    {t:'mc',p:'What is "Cat" in French?',a:'Chat (Cat)',cs:['Chien (Dog)','Chat (Cat)','Oiseau (Bird)','Poisson (Fish)']},
+    {t:'mc',p:'What is "Water" in French?',a:'Eau (Water)',cs:['Feu (Fire)','Terre (Earth)','Eau (Water)','Air (Air)']},
+    {t:'mc',p:'What is "Red" in French?',a:'Rouge (Red)',cs:['Bleu (Blue)','Vert (Green)','Rouge (Red)','Jaune (Yellow)']},
+    {t:'mc',p:'What is "House" in French?',a:'Maison (House)',cs:['Maison (House)','Voiture (Car)','École (School)','Parc (Park)']},
+    {t:'mc',p:'What is "Dog" in French?',a:'Chien (Dog)',cs:['Chat (Cat)','Chien (Dog)','Cheval (Horse)','Lapin (Rabbit)']},
+    {t:'mc',p:'What is "Sun" in French?',a:'Soleil (Sun)',cs:['Lune (Moon)','Soleil (Sun)','Étoile (Star)','Nuage (Cloud)']},
+    {t:'mc',p:'What is "Good" in French?',a:'Bon (Good)',cs:['Bon (Good)','Mal (Bad)','Grand (Big)','Petit (Small)']},
+    {t:'type',p:'Type "Thank you" in French:',a:'merci',h:'5 letters'},
+    {t:'type',p:'Type "Yes" in French:',a:'oui',h:'Sounds like we'},
+  ],
+  2:[
+    {t:'mc',p:'How do you say "How are you?" in French?',a:'Comment allez-vous? (How are you?)',cs:['Comment allez-vous? (How are you?)','Comment vous appelez-vous? (What is your name?)','Où êtes-vous? (Where are you?)','Quel âge avez-vous? (How old are you?)']},
+    {t:'mc',p:'How do you say "Good morning" in French?',a:'Bonjour (Good morning)',cs:['Bonne nuit (Good night)','Bon après-midi (Good afternoon)','Bonjour (Good morning)','À bientôt (See you soon)']},
+    {t:'mc',p:'How do you say "I am hungry" in French?',a:"J'ai faim (I am hungry)",cs:["J'ai faim (I am hungry)","J'ai soif (I am thirsty)","J'ai froid (I am cold)","J'ai sommeil (I am sleepy)"]},
+    {t:'mc',p:'How do you say "You are welcome" in French?',a:'De rien (You are welcome)',cs:['De rien (You are welcome)','Pardon (Sorry)',"S'il vous plaît (Please)",'Excusez-moi (Excuse me)']},
+    {t:'mc',p:'How do you say "I love you" in French?',a:"Je t'aime (I love you)",cs:["Je t'aime (I love you)",'Tu es belle (You are beautiful)','Bonne nuit (Good night)','Merci beaucoup (Thank you very much)']},
+    {t:'mc',p:'How do you say "Good night" in French?',a:'Bonne nuit (Good night)',cs:['Bonne nuit (Good night)','Bonjour (Good morning)','Bonne soirée (Good evening)','À bientôt (See you soon)']},
+    {t:'mc',p:'How do you say "Nice to meet you" in French?',a:'Enchanté (Nice to meet you)',cs:['Enchanté (Nice to meet you)','Au revoir (Goodbye)','Bonsoir (Good evening)','À bientôt (See you soon)']},
+    {t:'type',p:'Type "My name is" in French:',a:"je m'appelle",h:'I call myself'},
+  ],
+  3:[
+    {t:'convo',buddy:'Amélie',lang:'French',avatar:'👩🏻',
+     chat:'Bonjour! Comment vous vous appelez?',chatEn:'Hello! What is your name?',
+     prompt:'Reply: "My name is Luc and I am a student"',
+     words:['Je','mappelle','Luc','et','je','suis','etudiant'],
+     extraWords:['bonjour','non','professeur','medecin'],
+     answer:['Je','mappelle','Luc','et','je','suis','etudiant']},
+    {t:'convo',buddy:'Pierre',lang:'French',avatar:'👨🏻',
+     chat:'Est-ce que tu veux aller au café?',chatEn:'Do you want to go to the cafe?',
+     prompt:'Reply: "Yes I would like a coffee and a croissant"',
+     words:['Oui','je','voudrais','un','cafe','et','un','croissant'],
+     extraWords:['Non','thé','baguette','eau'],
+     answer:['Oui','je','voudrais','un','cafe','et','un','croissant']},
+    {t:'mc',p:'How do you say "Where is the bathroom?" in French?',a:'Où sont les toilettes? (Where is the bathroom?)',cs:['Où sont les toilettes? (Where is the bathroom?)','Où est le restaurant? (Where is the restaurant?)','Quelle heure est-il? (What time is it?)','Combien ça coûte? (How much?)']},
+    {t:'mc',p:'How do you say "Can you help me?" in French?',a:"Pouvez-vous m'aider? (Can you help me?)",cs:["Pouvez-vous m'aider? (Can you help me?)",'Où habitez-vous? (Where do you live?)','Comment ça va? (How is it going?)','Que faites-vous? (What are you doing?)']},
+    {t:'mc',p:'How do you say "I would like a coffee" in French?',a:'Je voudrais un café (I would like a coffee)',cs:['Je voudrais un café (I would like a coffee)',"J'ai un café (I have a coffee)",'Je bois du café (I drink coffee)','Avez-vous du café? (Do you have coffee?)']},
+    {t:'mc',p:'How do you say "Have a good day!" in French?',a:'Bonne journée! (Have a good day!)',cs:['Bonne journée! (Have a good day!)','Bonne nuit! (Good night!)','Bon appétit! (Enjoy your meal!)','Bienvenue! (Welcome!)']},
+    {t:'mc',p:'How do you say "I am learning French"?',a:"J'apprends le français (I am learning French)",cs:["J'apprends le français (I am learning French)",'Je parle parfaitement (I speak perfectly)',"Je ne sais pas (I do not know)",'Bonne journée (Have a good day)']},
+    {t:'mc',p:'How do you say "Delicious!" in French?',a:'Délicieux! (Delicious!)',cs:['Délicieux! (Delicious!)','Magnifique! (Magnificent!)','Parfait! (Perfect!)','Excellent! (Excellent!)']},
+    {t:'type',p:'Type "I do not understand" in French:',a:'je ne comprends pas',h:'4 words'},
+    {t:'type',p:'Type "What time is it?" in French:',a:'quelle heure est-il',h:'4 words'},
+  ],
+};
+
+BANKS['Vietnamese'] = {
+  1:[
+    {t:'mc',p:'How do you say "Hello" in Vietnamese?',a:'Xin chào (Hello)',cs:['Xin chào (Hello)','Tạm biệt (Goodbye)','Cảm ơn (Thank you)','Xin lỗi (Sorry)']},
+    {t:'mc',p:'What is "Water" in Vietnamese?',a:'Nước (Water)',cs:['Lửa (Fire)','Đất (Earth)','Nước (Water)','Gió (Wind)']},
+    {t:'mc',p:'What is "Cat" in Vietnamese?',a:'Mèo (Cat)',cs:['Chó (Dog)','Mèo (Cat)','Chim (Bird)','Cá (Fish)']},
+    {t:'mc',p:'What is "Yes" in Vietnamese?',a:'Có (Yes)',cs:['Có (Yes)','Không (No)','Được (Okay)','Vâng (Yes-formal)']},
+    {t:'mc',p:'What is "No" in Vietnamese?',a:'Không (No)',cs:['Có (Yes)','Không (No)','Được (Okay)','Chưa (Not yet)']},
+    {t:'mc',p:'What is "Eat" in Vietnamese?',a:'Ăn (Eat)',cs:['Uống (Drink)','Ăn (Eat)','Ngủ (Sleep)','Đi (Go)']},
+    {t:'mc',p:'What is "House" in Vietnamese?',a:'Nhà (House)',cs:['Nhà (House)','Xe (Car)','Trường (School)','Chợ (Market)']},
+    {t:'mc',p:'What is "Good" in Vietnamese?',a:'Tốt (Good)',cs:['Tốt (Good)','Xấu (Bad)','Đẹp (Beautiful)','To (Big)']},
+    {t:'type',p:'Type "Thank you" in Vietnamese:',a:'cảm ơn',h:'Two words'},
+    {t:'type',p:'Type "Goodbye" in Vietnamese:',a:'tạm biệt',h:'Two words'},
+  ],
+  2:[
+    {t:'mc',p:'How do you say "How are you?" in Vietnamese?',a:'Bạn có khỏe không? (How are you?)',cs:['Bạn có khỏe không? (How are you?)','Bạn tên là gì? (What is your name?)','Bạn ở đâu? (Where are you?)','Bạn bao nhiêu tuổi? (How old are you?)']},
+    {t:'mc',p:'How do you say "I am hungry" in Vietnamese?',a:'Tôi đói (I am hungry)',cs:['Tôi đói (I am hungry)','Tôi khát (I am thirsty)','Tôi mệt (I am tired)','Tôi buồn (I am sad)']},
+    {t:'mc',p:'How do you say "Good morning" in Vietnamese?',a:'Chào buổi sáng (Good morning)',cs:['Chào buổi sáng (Good morning)','Chào buổi tối (Good evening)','Chúc ngủ ngon (Good night)','Xin chào (Hello)']},
+    {t:'mc',p:'How do you say "Good night" in Vietnamese?',a:'Chúc ngủ ngon (Good night)',cs:['Chúc ngủ ngon (Good night)','Chào buổi sáng (Good morning)','Xin chào (Hello)','Tạm biệt (Goodbye)']},
+    {t:'mc',p:'How do you say "You are welcome" in Vietnamese?',a:'Không có gì (You are welcome)',cs:['Không có gì (You are welcome)','Xin lỗi (Sorry)','Cảm ơn (Thank you)','Được rồi (Okay)']},
+    {t:'mc',p:'How do you say "My name is" in Vietnamese?',a:'Tên tôi là (My name is)',cs:['Tên tôi là (My name is)','Tôi là (I am)','Tôi sống ở (I live in)','Tôi học ở (I study at)']},
+    {t:'type',p:'Type "I love you" in Vietnamese:',a:'tôi yêu bạn',h:'3 words'},
+    {t:'type',p:'Type "Nice to meet you" in Vietnamese:',a:'rất vui được gặp bạn',h:'5 words'},
+  ],
+  3:[
+    {t:'convo',buddy:'Linh',lang:'Vietnamese',avatar:'👧🏻',
+     chat:'Xin chào! Bạn có khỏe không?',chatEn:'Hello! How are you?',
+     prompt:'Reply: "I am very well thank you and you?"',
+     words:['Tôi','rất','khỏe','cảm','ơn','còn','bạn'],
+     extraWords:['không','buồn','mệt','đói'],
+     answer:['Tôi','rất','khỏe','cảm','ơn','còn','bạn']},
+    {t:'convo',buddy:'Minh',lang:'Vietnamese',avatar:'👦🏻',
+     chat:'Bạn muốn ăn gì?',chatEn:'What do you want to eat?',
+     prompt:'Reply: "I want to eat pho with beef"',
+     words:['Tôi','muốn','ăn','phở','bò'],
+     extraWords:['uống','gà','cơm','bánh'],
+     answer:['Tôi','muốn','ăn','phở','bò']},
+    {t:'mc',p:'How do you say "Where is the bathroom?" in Vietnamese?',a:'Nhà vệ sinh ở đâu? (Where is the bathroom?)',cs:['Nhà vệ sinh ở đâu? (Where is the bathroom?)','Nhà hàng ở đâu? (Where is the restaurant?)','Mấy giờ rồi? (What time is it?)','Cái này bao nhiêu? (How much?)']},
+    {t:'mc',p:'How do you say "I am learning Vietnamese"?',a:'Tôi đang học tiếng Việt (I am learning Vietnamese)',cs:['Tôi đang học tiếng Việt (I am learning Vietnamese)','Tôi nói tiếng Việt giỏi (I speak Vietnamese well)','Tôi không biết tiếng Việt (I do not know Vietnamese)','Tiếng Việt khó lắm (Vietnamese is very hard)']},
+    {t:'mc',p:'How do you say "I would like to eat pho"?',a:'Tôi muốn ăn phở (I would like to eat pho)',cs:['Tôi muốn ăn phở (I would like to eat pho)','Tôi thích phở (I like pho)','Phở ngon lắm (Pho is very delicious)','Cho tôi xem thực đơn (Give me the menu)']},
+    {t:'mc',p:'How do you say "Delicious!" in Vietnamese?',a:'Ngon lắm! (Delicious!)',cs:['Ngon lắm! (Delicious!)','Đẹp lắm! (Beautiful!)','Tốt lắm! (Very good!)','Hay lắm! (Wonderful!)']},
+    {t:'mc',p:'How do you say "Can you help me?" in Vietnamese?',a:'Bạn có thể giúp tôi không? (Can you help me?)',cs:['Bạn có thể giúp tôi không? (Can you help me?)','Bạn sống ở đâu? (Where do you live?)','Bạn làm gì? (What do you do?)','Bạn bao nhiêu tuổi? (How old are you?)']},
+    {t:'mc',p:'How do you say "What is your name?" in Vietnamese?',a:'Bạn tên là gì? (What is your name?)',cs:['Bạn tên là gì? (What is your name?)','Bạn bao nhiêu tuổi? (How old are you?)','Bạn ở đâu? (Where are you?)','Bạn làm gì? (What do you do?)']},
+    {t:'type',p:'Type "I do not understand" in Vietnamese:',a:'tôi không hiểu',h:'3 words'},
+    {t:'mc',p:'How do you say "I am from America" in Vietnamese?',a:'Tôi đến từ Mỹ (I am from America)',cs:['Tôi đến từ Mỹ (I am from America)','Tôi sống ở Việt Nam (I live in Vietnam)','Tôi là người Việt (I am Vietnamese)','Tôi ở đây (I am here)']},
+  ],
+};
+
+BANKS['Mandarin Chinese'] = {
+  1:[
+    {t:'mc',p:'How do you say "Hello" in Mandarin?',a:'你好 Nǐ hǎo (Hello)',cs:['你好 Nǐ hǎo (Hello)','再见 Zàijiàn (Goodbye)','谢谢 Xièxiè (Thank you)','对不起 Duìbuqǐ (Sorry)']},
+    {t:'mc',p:'What is "Water" in Mandarin?',a:'水 Shuǐ (Water)',cs:['火 Huǒ (Fire)','土 Tǔ (Earth)','水 Shuǐ (Water)','风 Fēng (Wind)']},
+    {t:'mc',p:'What is "Cat" in Mandarin?',a:'猫 Māo (Cat)',cs:['狗 Gǒu (Dog)','猫 Māo (Cat)','鸟 Niǎo (Bird)','鱼 Yú (Fish)']},
+    {t:'mc',p:'What is "Red" in Mandarin?',a:'红色 Hóngsè (Red)',cs:['蓝色 Lánsè (Blue)','绿色 Lǜsè (Green)','红色 Hóngsè (Red)','黄色 Huángsè (Yellow)']},
+    {t:'mc',p:'What is "Good" in Mandarin?',a:'好 Hǎo (Good)',cs:['好 Hǎo (Good)','坏 Huài (Bad)','大 Dà (Big)','小 Xiǎo (Small)']},
+    {t:'mc',p:'What is "Mother" in Mandarin?',a:'妈妈 Māmā (Mother)',cs:['爸爸 Bàba (Father)','妈妈 Māmā (Mother)','哥哥 Gēgē (Brother)','姐姐 Jiějie (Sister)']},
+    {t:'mc',p:'Count "One Two Three" in Mandarin:',a:'一 二 三 Yī Èr Sān',cs:['一 二 三 Yī Èr Sān','四 五 六 Sì Wǔ Liù','七 八 九 Qī Bā Jiǔ','三 二 一 Sān Èr Yī']},
+    {t:'mc',p:'What is "Eat" in Mandarin?',a:'吃 Chī (Eat)',cs:['喝 Hē (Drink)','吃 Chī (Eat)','睡 Shuì (Sleep)','走 Zǒu (Walk)']},
+    {t:'type',p:'Type the pinyin for "Thank you" (say it twice):',a:'xie xie',h:'Repeat the same word'},
+    {t:'type',p:'Type the pinyin for "Goodbye":',a:'zai jian',h:'Zai + jian'},
+  ],
+  2:[
+    {t:'mc',p:'How do you say "What is your name?" in Mandarin?',a:'你叫什么名字? (What is your name?)',cs:['你叫什么名字? (What is your name?)','你好吗? Nǐ hǎo ma? (How are you?)','你在哪里? (Where are you?)','你多大? (How old are you?)']},
+    {t:'mc',p:'How do you say "I am hungry" in Mandarin?',a:'我饿了 Wǒ è le (I am hungry)',cs:['我饿了 Wǒ è le (I am hungry)','我渴了 Wǒ kě le (I am thirsty)','我累了 Wǒ lèi le (I am tired)','我病了 Wǒ bìng le (I am sick)']},
+    {t:'mc',p:'How do you say "Good morning" in Mandarin?',a:'早上好 Zǎoshang hǎo (Good morning)',cs:['早上好 Zǎoshang hǎo (Good morning)','晚上好 Wǎnshang hǎo (Good evening)','晚安 Wǎn\'ān (Good night)','下午好 (Good afternoon)']},
+    {t:'mc',p:'How do you say "Please" in Mandarin?',a:'请 Qǐng (Please)',cs:['请 Qǐng (Please)','谢谢 Xièxiè (Thank you)','对不起 Duìbuqǐ (Sorry)','没关系 Méiguānxi (No problem)']},
+    {t:'mc',p:'How do you say "You are welcome" in Mandarin?',a:'不客气 Bù kèqì (You are welcome)',cs:['不客气 Bù kèqì (You are welcome)','对不起 (Sorry)','谢谢 (Thank you)','请 (Please)']},
+    {t:'mc',p:'How do you say "Nice to meet you" in Mandarin?',a:'很高兴认识你 (Nice to meet you)',cs:['很高兴认识你 (Nice to meet you)','你好吗? (How are you?)','我们是朋友 (We are friends)','再见 (Goodbye)']},
+    {t:'type',p:'Type the pinyin for "I love you":',a:'wo ai ni',h:'3 short pinyin words'},
+    {t:'type',p:'Type the pinyin for "Good night":',a:'wan an',h:'wan + an'},
+  ],
+  3:[
+    {t:'convo',buddy:'Mei',lang:'Mandarin',avatar:'👧🏻',
+     chat:'你好！你叫什么名字？',chatEn:'Hello! What is your name?',
+     prompt:'Reply: "My name is Xiao Ming, I am from Beijing"',
+     words:['我','叫','小明','我','来自','北京'],
+     extraWords:['你','她','上海','广州'],
+     answer:['我','叫','小明','我','来自','北京']},
+    {t:'convo',buddy:'Wei',lang:'Mandarin',avatar:'👦🏻',
+     chat:'你想喝什么？',chatEn:'What do you want to drink?',
+     prompt:'Reply: "I want to drink green tea please"',
+     words:['我','想','喝','绿茶','请'],
+     extraWords:['吃','水','咖啡','红茶'],
+     answer:['我','想','喝','绿茶','请']},
+    {t:'mc',p:'How do you say "Where is the bathroom?" in Mandarin?',a:'洗手间在哪里? (Where is the bathroom?)',cs:['洗手间在哪里? (Where is the bathroom?)','餐厅在哪里? (Where is the restaurant?)','现在几点? (What time is it?)','这个多少钱? (How much?)']},
+    {t:'mc',p:'How do you say "I am learning Chinese"?',a:'我在学中文 (I am learning Chinese)',cs:['我在学中文 (I am learning Chinese)','我会说中文 (I can speak Chinese)','我不懂中文 (I do not understand Chinese)','中文很难 (Chinese is very hard)']},
+    {t:'mc',p:'How do you say "I want to eat dumplings"?',a:'我想吃饺子 (I want to eat dumplings)',cs:['我想吃饺子 (I want to eat dumplings)','我喜欢饺子 (I like dumplings)','饺子很好吃 (Dumplings are delicious)','给我饺子 (Give me dumplings)']},
+    {t:'mc',p:'How do you say "Delicious!" in Mandarin?',a:'好吃! Hǎo chī! (Delicious!)',cs:['好吃! Hǎo chī! (Delicious!)','好看! Hǎo kàn! (Looks great!)','太棒了! (Amazing!)','很好! Hěn hǎo! (Very good!)']},
+    {t:'mc',p:'How do you say "Congratulations!" in Mandarin?',a:'恭喜! Gōngxǐ! (Congratulations!)',cs:['恭喜! Gōngxǐ! (Congratulations!)','谢谢! (Thank you!)','加油! (Keep going!)','没问题! (No problem!)']},
+    {t:'mc',p:'How do you say "I am from America" in Mandarin?',a:'我来自美国 (I am from America)',cs:['我来自美国 (I am from America)','我住在美国 (I live in America)','我是美国人 (I am American)','我喜欢美国 (I like America)']},
+    {t:'type',p:'Type pinyin for "I do not understand":',a:'wo bu dong',h:'3 words: wo + bu + dong'},
+    {t:'type',p:'Type pinyin for "What time is it?":',a:'xian zai ji dian',h:'4 words'},
+  ],
+};
+
+BANKS['Japanese'] = {
+  1:[
+    {t:'mc',p:'How do you say "Hello" in Japanese?',a:'こんにちは Konnichiwa (Hello)',cs:['こんにちは Konnichiwa (Hello)','さようなら Sayonara (Goodbye)','ありがとう Arigato (Thank you)','すみません Sumimasen (Excuse me)']},
+    {t:'mc',p:'What is "Cat" in Japanese?',a:'猫 Neko (Cat)',cs:['犬 Inu (Dog)','猫 Neko (Cat)','鳥 Tori (Bird)','魚 Sakana (Fish)']},
+    {t:'mc',p:'What is "Water" in Japanese?',a:'水 Mizu (Water)',cs:['火 Hi (Fire)','土 Tsuchi (Earth)','水 Mizu (Water)','風 Kaze (Wind)']},
+    {t:'mc',p:'How do you say "Good morning" in Japanese?',a:'おはようございます Ohayo gozaimasu (Good morning)',cs:['おはようございます (Good morning)','こんばんは Konbanwa (Good evening)','おやすみ Oyasumi (Good night)','こんにちは Konnichiwa (Hello)']},
+    {t:'mc',p:'How do you say "I am sorry" in Japanese?',a:'すみません Sumimasen (I am sorry)',cs:['すみません Sumimasen (I am sorry)','ありがとう Arigato (Thank you)','はい Hai (Yes)','どうぞ Dozo (Please go ahead)']},
+    {t:'mc',p:'Count "One Two Three" in Japanese:',a:'一 二 三 Ichi Ni San',cs:['一 二 三 Ichi Ni San','四 五 六 Shi Go Roku','七 八 九 Shichi Hachi Ku','三 二 一 San Ni Ichi']},
+    {t:'mc',p:'What is "Red" in Japanese?',a:'赤 Aka (Red)',cs:['青 Ao (Blue)','緑 Midori (Green)','赤 Aka (Red)','黄色 Kiiro (Yellow)']},
+    {t:'mc',p:'What is "Eat" in Japanese?',a:'食べる Taberu (Eat)',cs:['飲む Nomu (Drink)','食べる Taberu (Eat)','寝る Neru (Sleep)','歩く Aruku (Walk)']},
+    {t:'type',p:'Type the romaji for "Yes" in Japanese:',a:'hai',h:'Short word'},
+    {t:'type',p:'Type the romaji for "Thank you" in Japanese:',a:'arigato',h:'Ends in o'},
+  ],
+  2:[
+    {t:'mc',p:'How do you say "What is your name?" in Japanese?',a:'お名前は何ですか? (What is your name?)',cs:['お名前は何ですか? (What is your name?)','お元気ですか? (How are you?)','どこですか? (Where is it?)','おいくつですか? (How old are you?)']},
+    {t:'mc',p:'How do you say "I am hungry" in Japanese?',a:'お腹がすきました (I am hungry)',cs:['お腹がすきました (I am hungry)','のどが渇きました (I am thirsty)','疲れました (I am tired)','眠いです (I am sleepy)']},
+    {t:'mc',p:'How do you say "Nice to meet you" in Japanese?',a:'よろしくお願いします (Nice to meet you)',cs:['よろしくお願いします (Nice to meet you)','またね Mata ne (See you later)','お大事に (Take care)','がんばって (Good luck)']},
+    {t:'mc',p:'How do you say "You are welcome" in Japanese?',a:'どういたしまして (You are welcome)',cs:['どういたしまして (You are welcome)','すみません (Sorry)','ありがとう (Thank you)','はい (Yes)']},
+    {t:'mc',p:'How do you say "Good night" in Japanese?',a:'おやすみなさい Oyasuminasai (Good night)',cs:['おやすみなさい (Good night)','おはよう Ohayo (Good morning)','こんばんは Konbanwa (Good evening)','またね (See you later)']},
+    {t:'mc',p:'How do you say "Please" in Japanese?',a:'お願いします Onegaishimasu (Please)',cs:['お願いします Onegaishimasu (Please)','ありがとう (Thank you)','すみません (Excuse me)','どうぞ Dozo (Go ahead)']},
+    {t:'type',p:'Type romaji for "I love you" in Japanese:',a:'aishiteru',h:'One word'},
+    {t:'type',p:'Type romaji for "I do not understand":',a:'wakarimasen',h:'One long word'},
+  ],
+  3:[
+    {t:'convo',buddy:'Yuki',lang:'Japanese',avatar:'👧🏻',
+     chat:'こんにちは！お名前は何ですか？',chatEn:'Hello! What is your name?',
+     prompt:'Reply: "My name is Kenji, nice to meet you"',
+     words:['私','の','名前','は','ケンジ','です','よろしく'],
+     extraWords:['あなた','先生','学生','こんにちは'],
+     answer:['私','の','名前','は','ケンジ','です','よろしく']},
+    {t:'convo',buddy:'Hiro',lang:'Japanese',avatar:'👦🏻',
+     chat:'何が食べたいですか？',chatEn:'What do you want to eat?',
+     prompt:'Reply: "I want to eat sushi and ramen"',
+     words:['寿司','と','ラーメン','が','食べたい','です'],
+     extraWords:['飲みたい','てんぷら','うどん','は'],
+     answer:['寿司','と','ラーメン','が','食べたい','です']},
+    {t:'mc',p:'How do you say "Where is the bathroom?" in Japanese?',a:'トイレはどこですか? (Where is the bathroom?)',cs:['トイレはどこですか? (Where is the bathroom?)','レストランはどこですか? (Where is the restaurant?)','今何時ですか? (What time is it?)','いくらですか? (How much?)']},
+    {t:'mc',p:'How do you say "I am learning Japanese"?',a:'日本語を勉強しています (I am learning Japanese)',cs:['日本語を勉強しています (I am learning Japanese)','日本語が上手です (I am good at Japanese)','日本語がわかりません (I do not understand Japanese)','日本語は難しい (Japanese is difficult)']},
+    {t:'mc',p:'How do you say "Delicious!" in Japanese?',a:'おいしい! Oishii! (Delicious!)',cs:['おいしい! Oishii! (Delicious!)','すごい! Sugoi! (Amazing!)','かわいい! Kawaii! (Cute!)','楽しい! Tanoshii! (Fun!)']},
+    {t:'mc',p:'How do you say "Congratulations!" in Japanese?',a:'おめでとうございます (Congratulations!)',cs:['おめでとうございます (Congratulations!)','ありがとうございます (Thank you very much)','すみません (I am sorry)','がんばってください (Please do your best)']},
+    {t:'mc',p:'How do you say "I am from America" in Japanese?',a:'私はアメリカ出身です (I am from America)',cs:['私はアメリカ出身です (I am from America)','私はアメリカに住んでいます (I live in America)','私はアメリカ人です (I am American)','アメリカが好きです (I like America)']},
+    {t:'mc',p:'How do you say "I want to eat sushi"?',a:'寿司を食べたいです (I want to eat sushi)',cs:['寿司を食べたいです (I want to eat sushi)','寿司が好きです (I like sushi)','寿司はおいしいです (Sushi is delicious)','お寿司をください (Please give me sushi)']},
+    {t:'type',p:'Type romaji for "Can you help me?":',a:'tasukete kudasai',h:'2 words'},
+    {t:'type',p:'Type romaji for "Please speak slowly":',a:'yukkuri hanashite kudasai',h:'3 words'},
+  ],
+};
+
+BANKS['Arabic'] = {
+  1:[
+    {t:'mc',p:'How do you say "Hello" in Arabic?',a:'مرحبا Marhaba (Hello)',cs:['مرحبا Marhaba (Hello)','مع السلامة Goodbye','شكرا Shukran (Thank you)','من فضلك Please']},
+    {t:'mc',p:'What is "Thank you" in Arabic?',a:'شكرا Shukran (Thank you)',cs:['مرحبا Marhaba (Hello)','شكرا Shukran (Thank you)','نعم Yes','لا No']},
+    {t:'mc',p:'What is "Water" in Arabic?',a:'ماء Maa (Water)',cs:['نار Nar (Fire)','أرض Ard (Earth)','ماء Maa (Water)','هواء Hawa (Air)']},
+    {t:'mc',p:'What is "Yes" in Arabic?',a:"نعم Na'am (Yes)",cs:["نعم Na'am (Yes)",'لا La (No)','ربما Rubbama (Maybe)','أحيانا Sometimes']},
+    {t:'mc',p:'What is "Goodbye" in Arabic?',a:"مع السلامة Ma'a as-salama (Goodbye)",cs:['مرحبا Marhaba (Hello)',"مع السلامة Ma'a as-salama (Goodbye)",'شكرا Shukran (Thank you)','أهلا Ahlan (Hi)']},
+    {t:'mc',p:'What is "House" in Arabic?',a:'بيت Bayt (House)',cs:['بيت Bayt (House)','سيارة Sayyara (Car)','مدرسة Madrasa (School)','سوق Suq (Market)']},
+    {t:'mc',p:'What is "Good" in Arabic?',a:"جيد Jayyid (Good)",cs:["جيد Jayyid (Good)","سيء Sayyi (Bad)","كبير Kabir (Big)","صغير Saghir (Small)"]},
+    {t:'mc',p:'What is "God willing" in Arabic?',a:'إن شاء الله Inshallah (God willing)',cs:['إن شاء الله Inshallah (God willing)','ما شاء الله Mashallah (God has willed)','الحمد لله Alhamdulillah (Praise God)','بسم الله Bismillah (In God name)']},
+    {t:'type',p:'Type the transliteration for "Peace be upon you":',a:'as-salamu alaykum',h:'Universal Islamic greeting'},
+    {t:'mc',p:'Count "One Two Three" in Arabic:',a:'واحد اثنان ثلاثة Wahid Ithnan Thalatha',cs:['واحد اثنان ثلاثة (One Two Three)','أربعة خمسة ستة (Four Five Six)','سبعة ثمانية تسعة (Seven Eight Nine)','عشرة تسعة ثمانية (Ten Nine Eight)']},
+  ],
+  2:[
+    {t:'mc',p:'How do you say "How are you?" in Arabic?',a:'كيف حالك? Kayfa halak? (How are you?)',cs:['كيف حالك? (How are you?)','ما اسمك? (What is your name?)','أين أنت? (Where are you?)','كم عمرك? (How old are you?)']},
+    {t:'mc',p:'How do you say "Good morning" in Arabic?',a:'صباح الخير Sabah al-khayr (Good morning)',cs:['صباح الخير (Good morning)','مساء الخير (Good evening)','تصبح على خير (Good night)','أهلا وسهلا (Welcome)']},
+    {t:'mc',p:'How do you say "I am hungry" in Arabic?',a:"أنا جائع Ana Jayi' (I am hungry)",cs:["أنا جائع (I am hungry)",'أنا عطشان (I am thirsty)','أنا تعبان (I am tired)','أنا نعسان (I am sleepy)']},
+    {t:'mc',p:'How do you say "You are welcome" in Arabic?',a:'عفوا Afwan (You are welcome)',cs:['عفوا Afwan (You are welcome)','شكرا Shukran (Thank you)','من فضلك (Please)','آسف (Sorry)']},
+    {t:'mc',p:'How do you say "I love you" in Arabic?',a:'أحبك Uhibbuk (I love you)',cs:['أحبك Uhibbuk (I love you)','أنت جميل (You are beautiful)','أنا سعيد (I am happy)','أفتقدك (I miss you)']},
+    {t:'mc',p:'How do you say "Good night" in Arabic?',a:'تصبح على خير (Good night)',cs:['تصبح على خير (Good night)','صباح الخير (Good morning)','مساء الخير (Good evening)','مع السلامة (Goodbye)']},
+    {t:'type',p:'Type "My name is" in Arabic (transliteration):',a:'ismi',h:'One word'},
+    {t:'mc',p:'How do you say "Please" in Arabic?',a:'من فضلك Min fadlak (Please)',cs:['من فضلك Min fadlak (Please)','شكرا Shukran (Thank you)','عفوا Afwan (Excuse me)','آسف (Sorry)']},
+  ],
+  3:[
+    {t:'convo',buddy:'Layla',lang:'Arabic',avatar:'👩🏽',
+     chat:'مرحبا! كيف حالك؟',chatEn:'Hello! How are you?',
+     prompt:'Reply: "I am fine thank you, and you?"',
+     words:['أنا','بخير','شكرا','وأنت'],
+     extraWords:['مرحبا','لا','نعم','تعبان'],
+     answer:['أنا','بخير','شكرا','وأنت']},
+    {t:'convo',buddy:'Omar',lang:'Arabic',avatar:'👦🏽',
+     chat:'ماذا تريد أن تأكل؟',chatEn:'What do you want to eat?',
+     prompt:'Reply: "I want to eat rice and chicken"',
+     words:['أريد','أن','آكل','أرز','ودجاج'],
+     extraWords:['أشرب','خبز','لحم','ماء'],
+     answer:['أريد','أن','آكل','أرز','ودجاج']},
+    {t:'mc',p:'How do you say "Where is the bathroom?" in Arabic?',a:'أين الحمام? Ayna al-hammam? (Where is the bathroom?)',cs:['أين الحمام? (Where is the bathroom?)','أين المطعم? (Where is the restaurant?)','كم الساعة? (What time is it?)','بكم هذا? (How much?)']},
+    {t:'mc',p:'How do you say "I am learning Arabic"?',a:'أنا أتعلم العربية (I am learning Arabic)',cs:['أنا أتعلم العربية (I am learning Arabic)','أنا أجيد العربية (I am good at Arabic)','لا أعرف العربية (I do not know Arabic)','العربية صعبة (Arabic is difficult)']},
+    {t:'mc',p:'How do you say "Delicious!" in Arabic?',a:"لذيذ! Ladhidh! (Delicious!)",cs:["لذيذ! Ladhidh! (Delicious!)",'جميل! Jamil! (Beautiful!)','ممتاز! Mumtaz! (Excellent!)','رائع! Wonderful!']},
+    {t:'mc',p:'How do you say "Congratulations!" in Arabic?',a:'مبروك Mabruk! (Congratulations!)',cs:['مبروك Mabruk! (Congratulations!)','شكرا (Thank you)','أهلا (Welcome)','إن شاء الله (God willing)']},
+    {t:'mc',p:'How do you say "I am from America" in Arabic?',a:'أنا من أمريكا (I am from America)',cs:['أنا من أمريكا (I am from America)','أنا أسكن في أمريكا (I live in America)','أنا أحب أمريكا (I love America)','أمريكا كبيرة (America is big)']},
+    {t:'mc',p:'How do you say "What time is it?" in Arabic?',a:'كم الساعة الآن? (What time is it?)',cs:['كم الساعة الآن? (What time is it?)','ما اليوم? (What day is it?)','ما الطقس? (What is the weather?)','ماذا تفعل? (What are you doing?)']},
+    {t:'type',p:'Type "I do not understand" in Arabic (transliteration):',a:'la afham',h:'2 words'},
+    {t:'mc',p:'How do you say "Nice to meet you" in Arabic?',a:'يسعدني لقاؤك (Nice to meet you)',cs:['يسعدني لقاؤك (Nice to meet you)','كيف حالك? (How are you?)','أهلا وسهلا (Welcome)','مرحبا (Hello)']},
+  ],
+};
+
+BANKS['Hindi'] = {
+  1:[
+    {t:'mc',p:'How do you say "Hello" in Hindi?',a:'नमस्ते Namaste (Hello)',cs:['नमस्ते Namaste (Hello)','अलविदा Alvida (Goodbye)','धन्यवाद Dhanyavad (Thank you)','कृपया Kripaya (Please)']},
+    {t:'mc',p:'What is "Water" in Hindi?',a:'पानी Pani (Water)',cs:['आग Aag (Fire)','मिट्टी Mitti (Earth)','पानी Pani (Water)','हवा Hawa (Air)']},
+    {t:'mc',p:'What is "Yes" in Hindi?',a:'हाँ Haan (Yes)',cs:['हाँ Haan (Yes)','नहीं Nahin (No)','ठीक है Theek hai (Okay)','शायद Shayad (Maybe)']},
+    {t:'mc',p:'What is "Cat" in Hindi?',a:'बिल्ली Billi (Cat)',cs:['कुत्ता Kutta (Dog)','बिल्ली Billi (Cat)','चिड़िया Chidiya (Bird)','मछली Machli (Fish)']},
+    {t:'mc',p:'What is "Good" in Hindi?',a:'अच्छा Accha (Good)',cs:['अच्छा Accha (Good)','बुरा Bura (Bad)','बड़ा Bada (Big)','छोटा Chhota (Small)']},
+    {t:'mc',p:'What is "Sun" in Hindi?',a:'सूरज Suraj (Sun)',cs:['चाँद Chaand (Moon)','सूरज Suraj (Sun)','तारा Tara (Star)','बादल Badal (Cloud)']},
+    {t:'mc',p:'Count "One Two Three" in Hindi:',a:'एक दो तीन Ek Do Teen',cs:['एक दो तीन Ek Do Teen','चार पाँच छह Char Panch Chhe','सात आठ नौ Saat Aath Nau','दस नौ आठ Das Nau Aath']},
+    {t:'mc',p:'What is "House" in Hindi?',a:'घर Ghar (House)',cs:['घर Ghar (House)','गाड़ी Gaadi (Car)','स्कूल School','पार्क Park']},
+    {t:'type',p:'Type "Thank you" in Hindi (romanized):',a:'dhanyavad',h:'Or shukriya works'},
+    {t:'type',p:'Type "Hello" in Hindi (romanized):',a:'namaste',h:'The classic greeting'},
+  ],
+  2:[
+    {t:'mc',p:'How do you say "How are you?" in Hindi?',a:'आप कैसे हैं? Aap kaise hain? (How are you?)',cs:['आप कैसे हैं? (How are you?)','आपका नाम क्या है? (What is your name?)','आप कहाँ हैं? (Where are you?)','आपकी उम्र क्या है? (How old are you?)']},
+    {t:'mc',p:'How do you say "I am hungry" in Hindi?',a:'मुझे भूख लगी है (I am hungry)',cs:['मुझे भूख लगी है (I am hungry)','मुझे प्यास लगी है (I am thirsty)','मैं थका हूँ (I am tired)','मुझे नींद आ रही है (I am sleepy)']},
+    {t:'mc',p:'How do you say "Good night" in Hindi?',a:'शुभ रात्रि Shubh Ratri (Good night)',cs:['शुभ रात्रि Shubh Ratri (Good night)','सुप्रभात (Good morning)','शुभ संध्या (Good evening)','अलविदा (Goodbye)']},
+    {t:'mc',p:'How do you say "Nice to meet you" in Hindi?',a:'आपसे मिलकर खुशी हुई (Nice to meet you)',cs:['आपसे मिलकर खुशी हुई (Nice to meet you)','आप कैसे हैं? (How are you?)','अलविदा (Goodbye)','स्वागत है (Welcome)']},
+    {t:'mc',p:'How do you say "Please" in Hindi?',a:'कृपया Kripaya (Please)',cs:['कृपया Kripaya (Please)','धन्यवाद Dhanyavad (Thank you)','माफ करें (Sorry)','ठीक है (Okay)']},
+    {t:'mc',p:'How do you say "You are welcome" in Hindi?',a:'कोई बात नहीं (You are welcome)',cs:['कोई बात नहीं (You are welcome)','माफ करें (Sorry)','धन्यवाद (Thank you)','कृपया (Please)']},
+    {t:'type',p:'Type "My name is" in Hindi (romanized):',a:'mera naam hai',h:'3 words'},
+    {t:'type',p:'Type "I love you" in Hindi (romanized):',a:'main tumse pyar karta hoon',h:'5 words'},
+  ],
+  3:[
+    {t:'convo',buddy:'Priya',lang:'Hindi',avatar:'👩🏽',
+     chat:'नमस्ते! आप कैसे हैं?',chatEn:'Hello! How are you?',
+     prompt:'Reply: "I am well thank you and you?"',
+     words:['मैं','ठीक','हूँ','धन्यवाद','और','आप'],
+     extraWords:['नहीं','हाँ','बुरा','कैसे'],
+     answer:['मैं','ठीक','हूँ','धन्यवाद','और','आप']},
+    {t:'convo',buddy:'Raj',lang:'Hindi',avatar:'👦🏽',
+     chat:'आप क्या खाना चाहते हैं?',chatEn:'What do you want to eat?',
+     prompt:'Reply: "I want to eat biryani and naan"',
+     words:['मुझे','बिरयानी','और','नान','खाना','है'],
+     extraWords:['पीना','चाय','पानी','रोटी'],
+     answer:['मुझे','बिरयानी','और','नान','खाना','है']},
+    {t:'mc',p:'How do you say "Where is the bathroom?" in Hindi?',a:'शौचालय कहाँ है? (Where is the bathroom?)',cs:['शौचालय कहाँ है? (Where is the bathroom?)','रेस्टोरेंट कहाँ है? (Where is the restaurant?)','अभी कितने बजे हैं? (What time is it?)','यह कितने का है? (How much?)']},
+    {t:'mc',p:'How do you say "I am learning Hindi"?',a:'मैं हिन्दी सीख रहा हूँ (I am learning Hindi)',cs:['मैं हिन्दी सीख रहा हूँ (I am learning Hindi)','मैं हिन्दी बोलता हूँ (I speak Hindi)','मुझे हिन्दी नहीं आती (I do not know Hindi)','हिन्दी मुश्किल है (Hindi is difficult)']},
+    {t:'mc',p:'How do you say "Congratulations!" in Hindi?',a:'बधाई हो! Badhai ho! (Congratulations!)',cs:['बधाई हो! Badhai ho! (Congratulations!)','धन्यवाद (Thank you)','स्वागत है (Welcome)','शुभकामनाएँ (Best wishes)']},
+    {t:'mc',p:'How do you say "I am from America" in Hindi?',a:'मैं अमेरिका से हूँ (I am from America)',cs:['मैं अमेरिका से हूँ (I am from America)','मैं अमेरिका में रहता हूँ (I live in America)','मैं अमेरिकी हूँ (I am American)','मुझे अमेरिका पसंद है (I like America)']},
+    {t:'mc',p:'How do you say "Delicious!" in Hindi?',a:'बहुत स्वादिष्ट! (Very delicious!)',cs:['बहुत स्वादिष्ट! (Very delicious!)','बहुत सुंदर! (Very beautiful!)','बहुत अच्छा! (Very good!)','शाबाश! Shabash! (Well done!)']},
+    {t:'mc',p:'How do you say "What is your name?" in Hindi?',a:'आपका नाम क्या है? (What is your name?)',cs:['आपका नाम क्या है? (What is your name?)','आप कैसे हैं? (How are you?)','आप कहाँ से हैं? (Where are you from?)','आपकी उम्र क्या है? (How old are you?)']},
+    {t:'type',p:'Type "I do not understand" in Hindi (romanized):',a:'mujhe samajh nahi aaya',h:'4 words'},
+    {t:'type',p:'Type "Can you help me?" in Hindi (romanized):',a:'kya aap meri madad kar sakte hain',h:'7 words'},
+  ],
+};
+
+BANKS['English'] = {
+  1:[
+    {t:'mc',p:'For immigrants: How do you say "Hello" in English?',a:'Hello (Hello)',cs:['Hello (Hello)','Goodbye (Goodbye)','Thank you (Thank you)','Please (Please)']},
+    {t:'mc',p:'What is the English word for "Casa" (House)?',a:'House',cs:['Car','House','School','Park']},
+    {t:'mc',p:'What is the English word for "Agua" (Water)?',a:'Water',cs:['Fire','Earth','Water','Air']},
+    {t:'mc',p:'What is the English word for "Gato" (Cat)?',a:'Cat',cs:['Dog','Cat','Bird','Fish']},
+    {t:'mc',p:'What is the English word for "Rojo" (Red)?',a:'Red',cs:['Blue','Green','Red','Yellow']},
+    {t:'mc',p:'How do you say "Buenos dias" in English?',a:'Good morning',cs:['Good night','Good afternoon','Good morning','See you later']},
+    {t:'mc',p:'What is the English word for "Perro" (Dog)?',a:'Dog',cs:['Cat','Dog','Horse','Rabbit']},
+    {t:'mc',p:'What is the English word for "Sol" (Sun)?',a:'Sun',cs:['Moon','Sun','Star','Cloud']},
+    {t:'type',p:'Spell the English word for "Gracias":',a:'thank you',h:'Two words'},
+    {t:'type',p:'Spell the English word for "Si" (Yes):',a:'yes',h:'3 letters'},
+  ],
+  2:[
+    {t:'mc',p:'How do you say "Como estas?" in English?',a:'How are you?',cs:['How are you?','What is your name?','Where are you?','How old are you?']},
+    {t:'mc',p:'What is the English for "Tengo sed" (I am thirsty)?',a:'I am thirsty',cs:['I am hungry','I am thirsty','I am tired','I am sleepy']},
+    {t:'mc',p:'How do you say "Buenas noches" in English?',a:'Good night',cs:['Good morning','Good afternoon','Good night','See you tomorrow']},
+    {t:'mc',p:'What is the English for "Te amo" (I love you)?',a:'I love you',cs:['I like you','I love you','I miss you','I need you']},
+    {t:'mc',p:'What is "Lo siento" in English?',a:'I am sorry',cs:['Thank you','You are welcome','I am sorry','Excuse me']},
+    {t:'mc',p:'What is "Mucho gusto" in English?',a:'Nice to meet you',cs:['Nice to meet you','How are you?','Goodbye','Welcome']},
+    {t:'type',p:'Write "I am hungry" in English:',a:'i am hungry',h:'3 simple words'},
+    {t:'type',p:'Write "My name is" in English:',a:'my name is',h:'3 words'},
+  ],
+  3:[
+    {t:'mc',p:'What is the English for "Donde esta el bano?"',a:'Where is the bathroom?',cs:['Where is the bathroom?','Where is the store?','What time is it?','How much is it?']},
+    {t:'mc',p:'What is the English for "Puedes ayudarme?"',a:'Can you help me?',cs:['Can you help me?','Where do you live?','What is your name?','How are you?']},
+    {t:'mc',p:'What is "I am learning English" used for?',a:'To say you are studying English',cs:['To say you are studying English','To say you speak perfectly','To say goodbye','To say thank you']},
+    {t:'mc',p:'What is "Nice to meet you" used for?',a:'When you meet someone new',cs:['When you meet someone new','When you say goodbye','When you eat food','When you are sorry']},
+    {t:'mc',p:'What is "I am from America" in Spanish?',a:'Soy de America',cs:['Soy de America','Tengo America','Voy a America','Estoy America']},
+    {t:'mc',p:'What does "Can you speak slowly please?" mean?',a:'A request to speak at a slower pace',cs:['A request to speak at a slower pace','A request for food','A greeting','A farewell']},
+    {t:'type',p:'Write "I do not understand" in English:',a:'i do not understand',h:'4 words'},
+    {t:'type',p:'Write "What time is it?" in English:',a:'what time is it',h:'4 words'},
+  ],
+};
+
+BANKS['Portuguese'] = {
+  1:[
+    {t:'mc',p:'How do you say "Hello" in Portuguese?',a:'Olá (Hello)',cs:['Olá (Hello)','Tchau (Bye)','Obrigado (Thank you)','Por favor (Please)']},
+    {t:'mc',p:'What is "Water" in Portuguese?',a:'Água (Water)',cs:['Fogo (Fire)','Terra (Earth)','Água (Water)','Ar (Air)']},
+    {t:'mc',p:'What is "Cat" in Portuguese?',a:'Gato (Cat)',cs:['Cachorro (Dog)','Gato (Cat)','Pássaro (Bird)','Peixe (Fish)']},
+    {t:'mc',p:'What is "Red" in Portuguese?',a:'Vermelho (Red)',cs:['Azul (Blue)','Verde (Green)','Vermelho (Red)','Amarelo (Yellow)']},
+    {t:'mc',p:'What is "House" in Portuguese?',a:'Casa (House)',cs:['Casa (House)','Carro (Car)','Escola (School)','Parque (Park)']},
+    {t:'mc',p:'How do you say "Good morning" in Portuguese?',a:'Bom dia (Good morning)',cs:['Bom dia (Good morning)','Boa noite (Good night)','Boa tarde (Good afternoon)','Até logo (See you later)']},
+    {t:'mc',p:'What is "Good" in Portuguese?',a:'Bom (Good)',cs:['Bom (Good)','Ruim (Bad)','Grande (Big)','Pequeno (Small)']},
+    {t:'mc',p:'What is "Sun" in Portuguese?',a:'Sol (Sun)',cs:['Lua (Moon)','Sol (Sun)','Estrela (Star)','Nuvem (Cloud)']},
+    {t:'type',p:'Type "Thank you" in Portuguese:',a:'obrigado',h:'obrigada for women'},
+    {t:'type',p:'Type "Yes" in Portuguese:',a:'sim',h:'3 letters'},
+  ],
+  2:[
+    {t:'mc',p:'How do you say "How are you?" in Portuguese?',a:'Como você está? (How are you?)',cs:['Como você está? (How are you?)','Como você se chama? (What is your name?)','Onde você está? (Where are you?)','Quantos anos você tem? (How old are you?)']},
+    {t:'mc',p:'How do you say "I am hungry" in Portuguese?',a:'Estou com fome (I am hungry)',cs:['Estou com fome (I am hungry)','Estou com sede (I am thirsty)','Estou cansado (I am tired)','Estou com sono (I am sleepy)']},
+    {t:'mc',p:'How do you say "Please" in Portuguese?',a:'Por favor (Please)',cs:['Obrigado (Thank you)','Por favor (Please)','Desculpe (Sorry)','De nada (You are welcome)']},
+    {t:'mc',p:'How do you say "You are welcome" in Portuguese?',a:'De nada (You are welcome)',cs:['Desculpe (Sorry)','De nada (You are welcome)','Por favor (Please)','Com licença (Excuse me)']},
+    {t:'mc',p:'How do you say "Good night" in Portuguese?',a:'Boa noite (Good night)',cs:['Boa noite (Good night)','Bom dia (Good morning)','Boa tarde (Good afternoon)','Até amanhã (See you tomorrow)']},
+    {t:'mc',p:'How do you say "Nice to meet you" in Portuguese?',a:'Muito prazer (Nice to meet you)',cs:['Muito prazer (Nice to meet you)','Como vai? (How are you?)','Até logo (Goodbye)','Bem-vindo (Welcome)']},
+    {t:'type',p:'Type "My name is" in Portuguese:',a:'meu nome é',h:'3 words'},
+    {t:'type',p:'Type "I love you" in Portuguese:',a:'eu te amo',h:'3 words'},
+  ],
+  3:[
+    {t:'mc',p:'How do you say "Where is the bathroom?" in Portuguese?',a:'Onde é o banheiro? (Where is the bathroom?)',cs:['Onde é o banheiro? (Where is the bathroom?)','Onde fica o restaurante? (Where is the restaurant?)','Que horas são? (What time is it?)','Quanto custa? (How much?)']},
+    {t:'mc',p:'How do you say "Can you help me?" in Portuguese?',a:'Você pode me ajudar? (Can you help me?)',cs:['Você pode me ajudar? (Can you help me?)','Onde você mora? (Where do you live?)','O que você faz? (What do you do?)','De onde você é? (Where are you from?)']},
+    {t:'mc',p:'How do you say "I am learning Portuguese"?',a:'Estou aprendendo português (I am learning Portuguese)',cs:['Estou aprendendo português (I am learning Portuguese)','Falo português perfeitamente (I speak perfect Portuguese)','Não sei português (I do not know Portuguese)','Estudo muito (I study a lot)']},
+    {t:'mc',p:'How do you say "Delicious!" in Portuguese?',a:'Delicioso! (Delicious!)',cs:['Delicioso! (Delicious!)','Bonito! (Beautiful!)','Excelente! (Excellent!)','Incrível! (Incredible!)']},
+    {t:'mc',p:'How do you say "Congratulations!" in Portuguese?',a:'Parabéns! (Congratulations!)',cs:['Parabéns! (Congratulations!)','Obrigado! (Thank you!)','Bem-vindo! (Welcome!)','Boa sorte! (Good luck!)']},
+    {t:'mc',p:'How do you say "I am from America" in Portuguese?',a:'Sou dos Estados Unidos (I am from America)',cs:['Sou dos Estados Unidos (I am from America)','Moro na América (I live in America)','Sou americano (I am American)','Gosto dos Estados Unidos (I like America)']},
+    {t:'type',p:'Type "I do not understand" in Portuguese:',a:'não entendo',h:'2 words'},
+    {t:'type',p:'Type "What time is it?" in Portuguese:',a:'que horas são',h:'3 words'},
+  ],
+};
+
+BANKS['Filipino'] = {
+  5:[
+    {t:'read',title:'Sa Palengke (At the Market)',author:'Immilish Level 5 - Filipino',
+     paragraph:'Pumunta si Maria sa palengke ngayong umaga. Maraming tao ang nandoon. Naghanap siya ng mga gulay at prutas. Nakita niya ang mga mangga, saging, at kamatis. Pumili siya ng pinakamagandang prutas. Nagbayad siya sa tindera at umuwi nang masaya.',
+     words:{'Pumunta':'went to','palengke':'market','ngayong':'today','umaga':'morning','Maraming':'many','tao':'people','nandoon':'there','Naghanap':'looked for','gulay':'vegetables','prutas':'fruits','Nakita':'saw','mangga':'mango','saging':'banana','kamatis':'tomato','Pumili':'chose','pinakamagandang':'most beautiful','Nagbayad':'paid','tindera':'vendor','umuwi':'went home','masaya':'happy'},
+     a:'Fruits and vegetables',cs:['Fruits and vegetables','Meat and fish','Clothes and shoes','Rice and bread']},
+    {t:'read',title:'Ang Aking Pamilya (My Family)',author:'Immilish Level 5 - Filipino',
+     paragraph:'Mahal ko ang aking pamilya. Kami ay limang miyembro — ako, ang aking ama, ina, kuya, at ate. Nakatira kami sa isang maliliit na bahay sa probinsya. Lagi kaming nagsasama-sama tuwing hapunan.',
+     words:{'Mahal':'love','aking':'my','pamilya':'family','Kami':'we','limang':'five','miyembro':'member','ama':'father','ina':'mother','kuya':'older brother','ate':'older sister','Nakatira':'live','maliliit':'small','bahay':'house','probinsya':'province','Lagi':'always','nagsasama-sama':'together','tuwing':'every','hapunan':'dinner'},
+     a:'In a small house in the province',cs:['In a small house in the province','In a big city apartment','In a school','Near the beach']},
+    {t:'read',title:'Ang Dagat (The Ocean)',author:'Immilish Level 5 - Filipino',
+     paragraph:'Ang Pilipinas ay may maraming magandang dagat. Ang tubig ay malinaw at malalim. Maraming isda at mga hayop sa ilalim ng dagat. Ang mga tao ay pumupunta sa dagat para lumangoy at maglaro.',
+     words:{'Pilipinas':'Philippines','maraming':'many','magandang':'beautiful','dagat':'ocean','tubig':'water','malinaw':'clear','malalim':'deep','isda':'fish','hayop':'animal','ilalim':'under','pumupunta':'go','para':'in order to','lumangoy':'to swim','maglaro':'to play'},
+     a:'To swim and play',cs:['To swim and play','To buy fish','To study','To work']},
+    {t:'read',title:'Pagluluto ng Adobo (Cooking Adobo)',author:'Immilish Level 5 - Filipino',
+     paragraph:'Ang adobo ay isa sa pinakasikat na pagkain sa Pilipinas. Ginagawa ito sa manok o baboy. Kailangan ng suka, toyo, bawang, at paminta. Iluto ang karne sa mahinang apoy hanggang maluto.',
+     words:{'pinakasikat':'most popular','pagkain':'food','Ginagawa':'made with','manok':'chicken','baboy':'pork','Kailangan':'need','suka':'vinegar','toyo':'soy sauce','bawang':'garlic','paminta':'pepper','Iluto':'cook','karne':'meat','mahinang':'low','apoy':'fire','maluto':'cooked'},
+     a:'Vinegar, soy sauce, garlic, and pepper',cs:['Vinegar, soy sauce, garlic, and pepper','Sugar, salt, oil, and onion','Coconut milk and lime','Rice and fish sauce']},
+    {t:'read',title:'Ang Kabataan (The Youth)',author:'Immilish Level 5 - Filipino',
+     paragraph:'Ang kabataan ay ang pag-asa ng bayan. Mahalaga na matuto ang mga bata sa paaralan. Ang kaalaman ay kapangyarihan. Ang edukasyon ay ang pinakamahalagang regalo para sa isang bata.',
+     words:{'kabataan':'youth','pag-asa':'hope','bayan':'nation','Mahalaga':'important','matuto':'to learn','bata':'child','paaralan':'school','kaalaman':'knowledge','kapangyarihan':'power','edukasyon':'education','pinakamahalagang':'most important','regalo':'gift'},
+     a:'Education',cs:['Education','Money','Friends','Technology']},
+    {t:'read',title:'Ang Guro Ko (My Teacher)',author:'Immilish Level 5 - Filipino',
+     paragraph:'Si Gng. Santos ay ang aking guro sa matematika. Siya ay mabait at matiyaga. Palagi siyang nagpapaliwanag nang maayos. Kapag hindi ko naiintindihan ang leksyon, tinutulungan niya ako.',
+     words:{'Gng.':'Mrs.','guro':'teacher','matematika':'mathematics','mabait':'kind','matiyaga':'patient','Palagi':'always','nagpapaliwanag':'explains','maayos':'well','Kapag':'when','naiintindihan':'understand','leksyon':'lesson','tinutulungan':'helps'},
+     a:'Mathematics',cs:['Mathematics','Science','English','History']},
+    {t:'read',title:'Isang Masayang Araw (A Happy Day)',author:'Immilish Level 5 - Filipino',
+     paragraph:'Ngayon ay isang masayang araw para sa akin. Nagising ako nang maaga at nakita ko ang magandang sikat ng araw. Kumain ako ng almusal kasama ang aking pamilya. Pagkatapos, naglaro kami sa labas ng bahay.',
+     words:{'Ngayon':'today','masayang':'happy','araw':'day','Nagising':'woke up','maaga':'early','nakita':'saw','magandang':'beautiful','sikat':'sunrise','Kumain':'ate','almusal':'breakfast','kasama':'with','Pagkatapos':'afterwards','naglaro':'played','labas':'outside'},
+     a:'Ate breakfast together',cs:['Ate breakfast together','Went to the market','Went to school','Cooked dinner']},
+  ],
+};
+
+// ═══════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════
+let selLang=null, selLv=1;
+let qs=[], qIdx=0, score=0, correct=0, streak=0, best=0;
+let answered=false;
+const done={};
+
+const LEVELS=[
+  {lv:1, icon:'🔤', label:'Basic Words',           bg:'linear-gradient(135deg,#FF7043,#FF8A65)', desc:'50 core words'},
+  {lv:2, icon:'💬', label:'Phrases',                bg:'linear-gradient(135deg,#F9A825,#FFD54F)', desc:'Real sentences'},
+  {lv:3, icon:'🗣️', label:'Conversations',         bg:'linear-gradient(135deg,#388E3C,#66BB6A)', desc:'Back and forth talk'},
+  {lv:4, icon:'📝', label:'Grammar & Writing',      bg:'linear-gradient(135deg,#0288D1,#4FC3F7)', desc:'Write correctly'},
+  {lv:5, icon:'🤝', label:'Introducing Yourself',   bg:'linear-gradient(135deg,#7B1FA2,#CE93D8)', desc:'Master self-introduction'},
+  {lv:6, icon:'🔄', label:'Mastering Translation',  bg:'linear-gradient(135deg,#00695C,#26A69A)', desc:'Translate full sentences'},
+  {lv:7, icon:'📋', label:'Full Summaries',          bg:'linear-gradient(135deg,#4527A0,#7C4DFF)', desc:'Type full summaries'},
+  {lv:8, icon:'📄', label:'Write A Paragraph',      bg:'linear-gradient(135deg,#BF360C,#FF7043)', desc:'Write a full paragraph'},
+  {lv:9, icon:'🌐', label:'Communicate With Others', bg:'linear-gradient(135deg,#1A237E,#3949AB)', desc:'Real conversations'},
+  {lv:10,icon:'📜', label:'Full SCR',               bg:'linear-gradient(135deg,#212121,#616161)', desc:'4-5 paragraphs, mastery'},
+];
+const offsets=['','margin-left:70px','','margin-right:70px',''];
+
+// ═══════════════════════════════════════════════════
+// BUILD LANGUAGE REGION COLUMNS
+// The search filter works by filtering LANGS array
+// and rebuilding the columns each time
+// ═══════════════════════════════════════════════════
+function buildRegions(q) {
+  const ql = (q||'').toLowerCase().trim();
+  const wrap = document.getElementById('regWrap');
+  wrap.innerHTML = '';
+  let total = 0;
+
+  REGIONS.forEach(function(region) {
+    // Filter languages for this region
+    const langs = LANGS.filter(function(l) {
+      if (l.c !== region.id) return false;
+      if (!ql) return true;
+      return l.n.toLowerCase().includes(ql) || l.v.toLowerCase().includes(ql);
+    });
+
+    if (langs.length === 0) return; // skip empty regions
+
+    total += langs.length;
+
+    // Build column
+    const col = document.createElement('div');
+    col.className = 'rcol';
+    col.innerHTML = '<div class="rhdr"><span class="ricon">'+region.icon+'</span><span class="rname">'+region.label+'</span><span class="rcnt">'+langs.length+'</span></div><div class="llist" id="ll-'+region.id+'"></div>';
+    wrap.appendChild(col);
+
+    const list = document.getElementById('ll-'+region.id);
+
+    langs.forEach(function(lang) {
+      const item = document.createElement('div');
+      const isSel = selLang && selLang.n === lang.n;
+      item.className = 'litem' + (isSel ? ' sel' : '');
+      item.innerHTML = '<span class="lflag">'+lang.f+'</span><div class="linfo"><div class="lname">'+lang.n+'</div><div class="lnat">'+lang.v+'</div></div>'+(lang.b ? '<span class="lbadge">✓ Full</span>' : '');
+
+      item.addEventListener('click', function() {
+        selLang = lang;
+        document.getElementById('selLbl').textContent = 'Selected: '+lang.f+' '+lang.n+(lang.b ? ' — Full bank ready!' : ' — AI will generate questions!');
+        document.getElementById('goBtn').classList.add('on');
+        buildRegions(document.getElementById('srch').value);
+        goPath();
+      });
+
+      list.appendChild(item);
+    });
+  });
+
+  document.getElementById('cnt').textContent = total;
+}
+
+function doSearch(val) {
+  buildRegions(val);
+}
+
+function pickLv(btn) {
+  document.querySelectorAll('.lv-btn').forEach(function(b){b.classList.remove('on');});
+  btn.classList.add('on');
+  selLv = parseInt(btn.getAttribute('data-lv'));
+}
+
+function goPath() {
+  if (!selLang) return;
+  document.getElementById('pf').textContent = selLang.f;
+  document.getElementById('pn').textContent = selLang.n;
+  document.getElementById('pv').textContent = selLang.v;
+  document.getElementById('pb').style.display = selLang.b ? 'inline' : 'none';
+  buildPath();
+  show(2);
+}
+
+// ═══════════════════════════════════════════════════
+// BUILD LEVEL PATH
+// ═══════════════════════════════════════════════════
+function buildPath() {
+  const d = done[selLang.n] || [];
+  const div = document.getElementById('pathDiv');
+  div.innerHTML = '';
+
+  const lbl = document.createElement('div');
+  lbl.className = 'pjlbl';
+  lbl.textContent = selLang.n.toUpperCase() + ' — 10 LEVEL JOURNEY';
+  div.appendChild(lbl);
+
+  const milestones = {2:{icon:'🎯',label:'Beginner!',doneIcon:'🥉'}, 4:{icon:'⚡',label:'Intermediate!',doneIcon:'🥈'}, 7:{icon:'🌟',label:'Advanced!',doneIcon:'🥇'}, 9:{icon:'👑',label:'MASTER!',doneIcon:'🏆'}};
+  const zigzag = ['','margin-left:60px','','margin-right:60px','','margin-left:60px','','margin-right:60px','','margin-left:60px'];
+
+  LEVELS.forEach(function(lv, i) {
+    const isDone = d.includes(lv.lv);
+    const isOpen = lv.lv === 1 || d.includes(lv.lv - 1);
+
+    if (i > 0) {
+      const vc = document.createElement('div');
+      vc.className = 'pvc' + (d.includes(i) ? ' done' : '');
+      div.appendChild(vc);
+    }
+
+    if (milestones[i]) {
+      const ms_data = milestones[i];
+      const ms_done = d.length > i;
+      const vc2 = document.createElement('div'); vc2.className = 'pvc' + (ms_done ? ' done' : ''); div.appendChild(vc2);
+      const ms = document.createElement('div'); ms.className = 'pmile';
+      ms.innerHTML = '<div class="pmilebox" style="'+(ms_done?'background:linear-gradient(135deg,#F9A825,#FFD54F);border-color:#FFD54F;':'')+'">'+( ms_done ? ms_data.doneIcon : ms_data.icon)+'</div><div class="pmilel">'+(ms_done ? ms_data.label : 'Complete Level '+i+' first')+'</div>';
+      div.appendChild(ms);
+      const vc3 = document.createElement('div'); vc3.className = 'pvc' + (ms_done ? ' done' : ''); div.appendChild(vc3);
+    }
+
+    const row = document.createElement('div'); row.className = 'plvrow';
+    const node = document.createElement('div');
+    const cls = isDone ? 'done' : isOpen ? 'open' : 'locked';
+    node.className = 'plvnode ' + cls;
+    if (zigzag[i]) node.style.cssText = zigzag[i];
+    if (isDone || isOpen) node.style.background = lv.bg;
+
+    if (isDone) {
+      node.innerHTML = '<span class="picon">⭐</span><span class="plabel">L'+lv.lv+' '+lv.label+'</span><div class="ptip">Completed! ⭐⭐⭐</div><div class="pstars">⭐⭐⭐</div>';
+    } else if (isOpen) {
+      node.innerHTML = '<span class="picon">'+lv.icon+'</span><span class="plabel">L'+lv.lv+' '+lv.label+'</span><div class="ptip">'+lv.desc+' — Tap!</div>';
+      (function(lvNum){ node.addEventListener('click', function(){ selLv=lvNum; startLesson(); }); })(lv.lv);
+    } else {
+      node.innerHTML = '<span class="plockicon">🔒</span><span class="plabel" style="color:rgba(255,255,255,.3)">L'+lv.lv+' Locked</span><div class="ptip">Complete Level '+(lv.lv-1)+' first!</div>';
+    }
+    row.appendChild(node); div.appendChild(row);
+  });
+}
+
+// ═══════════════════════════════════════════════════
+// START LESSON
+// ═══════════════════════════════════════════════════
+function startLesson() {
+  if (!selLang) return;
+  qIdx=0; score=0; correct=0; streak=0; best=0; answered=false;
+  document.getElementById('lln').textContent = selLang.f+' '+selLang.n;
+  document.getElementById('llv').textContent = selLv+' — '+(LEVELS[selLv-1]?LEVELS[selLv-1].label:'Lesson');
+  show(3);
+
+  var bank = BANKS[selLang.n] && BANKS[selLang.n][selLv];
+
+  // Levels 4-10: always AI-generated (level 5+ have 14 questions)
+  if (selLv >= 4 || !bank || bank.length < 7) {
+    qs = [{t:'loading',p:'Generating your '+selLang.n+' Level '+selLv+' lesson...'}];
+    buildQPath();
+    showLoadingCard();
+    generateLevelContent(selLang.n, selLv);
+  } else {
+    qs = shuffle(bank.slice());
+    buildQPath();
+    renderQ();
+  }
+}
+
+function showLoadingCard() {
+  var card = document.getElementById('qcard');
+  var lvl = LEVELS[selLv-1] || {};
+  card.innerHTML = '<div style="text-align:center;padding:40px 20px;">'
+    + '<div style="font-size:3rem;margin-bottom:16px;animation:bnc .9s infinite">🤖</div>'
+    + '<div style="font-family:Baloo 2,cursive;font-size:1.2rem;font-weight:800;color:var(--navy);margin-bottom:6px;">Immilish AI is building your '+selLang.n+' lesson!</div>'
+    + '<div style="font-size:.88rem;color:#546E7A;font-weight:700;margin-bottom:4px;">Level '+selLv+': '+lvl.label+'</div>'
+    + '<div style="font-size:.82rem;color:#90A4AE;font-weight:600;">'+lvl.desc+'</div>'
+    + '<div class="dots" style="justify-content:center;margin-top:18px;"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>'
+    + '</div>';
+}
+
+async function generateLevelContent(langName, level) {
+  var lvl = LEVELS[level-1] || {};
+  var questionCount = level >= 5 ? 14 : 8;
+  var sys = buildSystemPrompt(langName, level, lvl, questionCount);
+  var userMsg = buildUserPrompt(langName, level, lvl, questionCount);
+
+  try {
+    var res = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:4000,
+        system:sys,
+        messages:[{role:'user',content:userMsg}]
+      })
+    });
+    var data = await res.json();
+    var raw = (data.content&&data.content[0]&&data.content[0].text)||'[]';
+    raw = raw.replace(/```json\n?/g,'').replace(/```/g,'').trim();
+    var parsed = JSON.parse(raw);
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      // For open-ended levels, set all type question answers to 'any'
+      if (selLv >= 7) {
+        parsed = parsed.map(function(q) {
+          if (q.t === 'type') { q.a = 'any'; }
+          return q;
+        });
+      }
+      qs = shuffle(parsed);
+      qIdx = 0;
+      buildQPath();
+      renderQ();
+    } else { throw new Error('Empty'); }
+  } catch(e) {
+    qs = buildFallbackLevel(langName, level, lvl);
+    qIdx = 0;
+    buildQPath();
+    renderQ();
+  }
+}
+
+function buildSystemPrompt(lang, level, lvl, count) {
+  var base = 'You are Immilish AI generating language learning content for students learning '+lang+'. Return ONLY a valid JSON array. No markdown, no explanation, just the array.';
+
+  var specs = {
+    4: 'Generate '+count+' grammar and writing questions for '+lang+'. Use ONLY two types: mc or type. ' +
+       'For mc: p = a clear English question (e.g. "Which sentence uses the correct past tense in '+lang+'?"), a = correct answer in '+lang+' with English in parens, cs = 4 choices all in '+lang+' with English in parens. ' +
+       'For type: p = a clear English instruction that tells the student EXACTLY what to write (e.g. "Translate this sentence to '+lang+': I went to the store yesterday" or "Conjugate the verb to eat in '+lang+' for I/You/He"), a = the correct answer in '+lang+', h = a short helpful hint. ' +
+       'NEVER use vague prompts. Every question must have a full clear description of what to do. Topics: past/present/future tense, plurals, adjective agreement, common verb conjugations, sentence word order.',
+    5: 'Generate EXACTLY '+count+' questions for "Mastering Introducing Yourself" in '+lang+'. Include convo buddy questions where a buddy (give them a name and emoji avatar) speaks to the student in '+lang+' and the student must drag words to respond. Mix convo, mc, and type questions. Topics: name, age, country, job, hobbies, family. convo questions need: t, buddy, lang, avatar, chat (in '+lang+'), chatEn (English translation), prompt (instruction), words (array of correct words to drag), extraWords (distractors), answer (correct word order array). mc questions need: t, p, a, cs (all in '+lang+' with English in parens). type questions need: t, p, a, h.',
+    6: 'Generate '+count+' translation questions for '+lang+'. Half translate English to '+lang+', half translate '+lang+' to English. Use type questions mostly. Each answer should be the full translation. Include a hint for each.',
+    7: 'Generate '+count+' questions where students must type full summaries and sentences in '+lang+'. Use type questions. Topics: describe a day, summarize a short story, explain a concept. Each answer should be a short sentence in '+lang+'. Include hints.',
+    8: 'Generate '+count+' questions requiring students to write paragraphs or long sentences in '+lang+'. Use type questions. The answer should be 1-2 sentences in '+lang+'. Topics: describe your home, your family, your city, your dreams.',
+    9: 'Generate '+count+' conversation-based questions in '+lang+'. Use convo type for most. Include realistic dialogues: ordering food, asking directions, making friends, shopping, at a doctor. convo questions need: t, buddy, lang, avatar, chat, chatEn, prompt, words, extraWords, answer.',
+    10: 'Generate '+count+' advanced questions for Full SCR (Summary, Commentary, Response) mastery in '+lang+'. Use type questions. Students must write 2-4 sentence responses. Topics: respond to a news headline in '+lang+', write a mini-essay, comment on a scenario. Answers should be multi-sentence in '+lang+'. Hints should explain what to write.'
+  };
+
+  return base + ' ' + (specs[level] || specs[4]);
+}
+
+function buildUserPrompt(lang, level, lvl, count) {
+  return 'Generate '+count+' Level '+level+' ('+lvl.label+') questions for learning '+lang+'. Return ONLY the JSON array. All answer choices (cs) must be in '+lang+' with English meaning in parentheses. No placeholder text like "The greeting word".';
+}
+
+function buildFallbackLevel(lang, level, lvl) {
+  // Fallback type-only questions if AI fails
+  var topics = {
+    4:['grammar','verb tenses','sentence structure'],
+    5:['your name','your country','your job','your hobby','your family'],
+    6:['translate Hello','translate Thank you','translate How are you'],
+    7:['describe your day','summarize a story','explain something'],
+    8:['write about your home','describe your city','talk about your dreams'],
+    9:['order food','ask for directions','introduce yourself'],
+    10:['respond to a news story','write a mini-essay','comment on a topic']
+  };
+  var t = topics[level] || topics[4];
+  return t.map(function(topic) {
+    return {t:'type',p:'Write a sentence in '+lang+' about: '+topic,a:'any',h:'Immilish AI is learning this language too — try your best!'};
+  }).concat([
+    {t:'type',p:'Write "Hello my name is [your name]" in '+lang+':',a:'any',h:'Type your best attempt!'},
+    {t:'type',p:'Write "I am learning '+lang+' with Immilish" in '+lang+':',a:'any',h:'Type it out!'},
+  ]);
+}
+
+function fallback() {
+  // For languages without a built-in bank, generate real questions via AI
+  // Show a loading state and fetch from Claude
+  qs = [{t:'loading',p:'Generating your '+selLang.n+' lesson...'}];
+  generateAIBank(selLang.n, selLv);
+  return [{t:'loading',p:'Generating your '+selLang.n+' lesson...'}];
+}
+
+async function generateAIBank(langName, level) {
+  var levelName = ['Basic Words','Phrases','Conversations','Grammar','Reading'][level-1] || 'Basic Words';
+  var sys = 'You are Immilish AI generating language learning questions. Return ONLY a valid JSON array of exactly 8 question objects. No markdown, no extra text, just the JSON array.\n\nEach object must have:\n- t: "mc" or "type"\n- p: the question prompt in English\n- a: the correct answer IN THE TARGET LANGUAGE (with English meaning in parentheses)\n- cs: array of 4 answer choices ALL IN THE TARGET LANGUAGE with English in parentheses (for mc only)\n- h: a short hint (for type only)\n\nIMPORTANT: All answer choices must be REAL words/phrases in '+langName+', not placeholder text like "The greeting word". Show the actual '+langName+' word with English in parentheses.\n\nExample mc question for Spanish Level 1:\n{"t":"mc","p":"How do you say \"Hello\" in Spanish?","a":"Hola (Hello)","cs":["Hola (Hello)","Adiós (Goodbye)","Gracias (Thank you)","Por favor (Please)"]}\n\nExample type question:\n{"t":"type","p":"How do you say \"Thank you\" in '+langName+'?","a":"the actual word","h":"Short hint"}';
+
+  var userMsg = 'Generate 8 '+levelName+' level questions for learning '+langName+'. Mix mc and type questions. ALL answer choices must be real '+langName+' words with English meaning in parentheses. Return only the JSON array.';
+
+  // Show loading card
+  var card = document.getElementById('qcard');
+  card.innerHTML = '<div style="text-align:center;padding:40px 20px;">'
+    + '<div style="font-size:3rem;margin-bottom:16px;animation:bnc .9s infinite">🤖</div>'
+    + '<div style="font-family:Baloo 2,cursive;font-size:1.3rem;font-weight:800;color:var(--navy);margin-bottom:8px;">Immilish AI is generating your '+langName+' lesson!</div>'
+    + '<div style="font-size:.9rem;color:#546E7A;font-weight:600;">Creating real '+langName+' words and phrases just for you...</div>'
+    + '<div class="dots" style="justify-content:center;margin-top:16px;"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>'
+    + '</div>';
+
+  try {
+    var res = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:3000,system:sys,messages:[{role:'user',content:userMsg}]})
+    });
+    var data = await res.json();
+    var raw = data.content && data.content[0] && data.content[0].text || '[]';
+    // Strip any markdown fences
+    raw = raw.replace(/```json/g,'').replace(/```/g,'').trim();
+    var parsed = JSON.parse(raw);
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      // For open-ended levels, set all type question answers to 'any'
+      if (selLv >= 7) {
+        parsed = parsed.map(function(q) {
+          if (q.t === 'type') { q.a = 'any'; }
+          return q;
+        });
+      }
+      qs = shuffle(parsed);
+      qIdx = 0;
+      buildQPath();
+      renderQ();
+    } else {
+      throw new Error('Invalid response');
+    }
+  } catch(e) {
+    // Last resort fallback with generic but honest questions
+    qs = [
+      {t:'type',p:'How do you say "Hello" in '+langName+'? Type it!',a:'any',h:'Immilish AI is learning too — just try!'},
+      {t:'type',p:'How do you say "Thank you" in '+langName+'?',a:'any',h:'Type what you think!'},
+      {t:'type',p:'How do you say "Goodbye" in '+langName+'?',a:'any',h:'Give it a go!'},
+      {t:'type',p:'How do you say "Yes" in '+langName+'?',a:'any',h:'Type it!'},
+      {t:'type',p:'How do you say "No" in '+langName+'?',a:'any',h:'Type it!'},
+      {t:'type',p:'How do you say "Water" in '+langName+'?',a:'any',h:'Type it!'},
+      {t:'type',p:'How do you say "I love you" in '+langName+'?',a:'any',h:'Type it!'},
+    ];
+    qIdx = 0;
+    buildQPath();
+    renderQ();
+  }
+}
+
+function shuffle(a) {
+  for (var i=a.length-1;i>0;i--) { var j=Math.floor(Math.random()*(i+1)); var tmp=a[i]; a[i]=a[j]; a[j]=tmp; }
+  return a;
+}
+
+// ═══════════════════════════════════════════════════
+// QUESTION PATH BAR
+// ═══════════════════════════════════════════════════
+function buildQPath() {
+  var bar = document.getElementById('qpbar');
+  bar.innerHTML = '';
+  var icons = ['🔤','💬','🗣️','📝','⭐','🌟','🏆','🎯'];
+  for (var i=0;i<qs.length;i++) {
+    if (i>0) { var c=document.createElement('div'); c.className='qpc'; c.id='qpc'+i; bar.appendChild(c); }
+    var n=document.createElement('div');
+    n.className='qpn'+(i===0?' cur':''); n.id='qpn'+i;
+    n.innerHTML=''+(i+1)+'<span class="ql">'+icons[i%8]+'</span>';
+    bar.appendChild(n);
+  }
+}
+
+function updateQPath() {
+  for (var i=0;i<qs.length;i++) {
+    var n=document.getElementById('qpn'+i);
+    var c=document.getElementById('qpc'+i);
+    if (!n) continue;
+    n.classList.remove('done','cur');
+    if (i<qIdx) { n.classList.add('done'); if(c) c.classList.add('done'); }
+    else if (i===qIdx) n.classList.add('cur');
+  }
+}
+
+// ═══════════════════════════════════════════════════
+// RENDER QUESTION
+// ═══════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
+function renderQ() {
+  answered = false;
+  var q = qs[qIdx];
+  if (!q || q.t === 'loading') return;
+  updateQPath();
+  document.getElementById('pgbar').style.width = (qIdx/qs.length*100)+'%';
+  var card = document.getElementById('qcard');
+  var lvNames = ['Basic Words','Phrases','Conversations','Grammar & Writing','Introducing Yourself','Mastering Translation','Full Summaries','Write A Paragraph','Communicate With Others','Full SCR'];
+  var lvlBadgeColors = {
+    1:'#FF7043',2:'#F9A825',3:'#388E3C',4:'#0288D1',
+    5:'#7B1FA2',6:'#00695C',7:'#4527A0',8:'#BF360C',9:'#1A237E',10:'#212121'
+  };
+  var badgeColor = lvlBadgeColors[selLv] || '#FF7043';
+  var typeLabels = {mc:'Multiple Choice &#x1F3AF;', type:'Type Your Answer &#x270D;&#xFE0F;', read:'Read & Tap &#x1F4D6;', convo:'Conversation Buddy &#x1F4AC;', grammar:'Grammar Exercise &#x1F4DD;', writing:'Writing Practice &#x270F;&#xFE0F;', translation:'Translation &#x1F504;'};
+  var typeName = typeLabels[q.t] || (q.t ? q.t.charAt(0).toUpperCase()+q.t.slice(1) : 'Question');
+  var lvlName = (LEVELS[selLv-1] ? LEVELS[selLv-1].label : 'Level '+selLv);
+  var html = '<div class="qbadge" style="background:'+badgeColor+'1a;color:'+badgeColor+';border:1.5px solid '+badgeColor+'44;">Level '+selLv+': '+lvlName+'</div>';
+  html += '<div style="font-size:.62rem;font-weight:800;color:#90A4AE;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">'+typeName+'</div>';
+
+  if (q.t === 'convo') {
+    // ── CONVERSATION BUDDY ──
+    // Guard: if words missing or empty, fall back to type question
+    if (!q.words || q.words.length === 0) {
+      q.t = 'type';
+      q.p = q.prompt || ('Reply to: ' + q.chat);
+      q.a = 'any';
+      q.h = 'Type your response in ' + selLang.n;
+    }
+    var allWords = shuffle((q.words||[]).concat(q.extraWords || []));
+    window._convoAnswer = q.answer;
+    window._convoPlaced = [];
+    html += '<div class="convo-wrap">';
+    // Buddy speech bubble
+    html += '<div class="buddy-row">';
+    html += '<div class="buddy-avatar">' + (q.avatar||'🤖') + '</div>';
+    html += '<div class="buddy-bubble">';
+    html += '<div class="buddy-name">' + (q.buddy||'Buddy') + ' &mdash; ' + (q.lang||selLang.n) + '</div>';
+    html += '<div class="buddy-text">' + q.chat + '</div>';
+    html += '<div class="buddy-translation">' + q.chatEn + '</div>';
+    html += '</div></div>';
+    // Instruction
+    html += '<div class="convo-instruction">&#x1F4AD; ' + q.prompt + '</div>';
+    // Drop zone
+    html += '<div class="drop-zone" id="dropZone" ondragover="onDzOver(event)" ondragleave="onDzLeave(event)" ondrop="dropWord(event)">';
+    html += '<span class="drop-placeholder" id="dropPlaceholder">Drag words here to build your sentence...</span>';
+    html += '</div>';
+    // Word bank
+    html += '<div class="word-bank" id="wordBank">';
+    allWords.forEach(function(w, i) {
+      html += '<div class="word-tile" id="wtile-' + i + '" draggable="true" data-word="' + w.replace(/"/g,'&quot;') + '" data-idx="' + i + '" '
+        + 'ondragstart="dragStart(event)" ondragend="dragEnd(event)" onclick="tapTile(this)">' + w + '</div>';
+    });
+    html += '</div>';
+    // Check button
+    html += '<button class="convo-check-btn" id="convoCheckBtn" onclick="checkConvo()" disabled>Check My Answer &#x2714;</button>';
+    html += '</div>';
+
+  } else if (q.t === 'read') {
+    window._pw = q.words || {};
+    window._lw = new Set();
+    var paragraph = q.paragraph || '';
+    var words = paragraph.split(' ');
+    var tapped = words.map(function(raw) {
+      var clean = raw.replace(/[^a-zA-Z\u00C0-\u024F\u1E00-\u1EFF-]/g,'');
+      var key = null;
+      var pkeys = Object.keys(q.words||{});
+      for (var k=0;k<pkeys.length;k++) {
+        if (pkeys[k].toLowerCase() === clean.toLowerCase()) { key=pkeys[k]; break; }
+      }
+      if (key) {
+        var sk = key.replace(/'/g,"\\'");
+        return '<span class="tw" onclick="tapW(\''+sk+'\',this)">'+raw+'</span>';
+      }
+      return raw;
+    }).join(' ');
+    html += '<div class="ptitle">'+(q.title||'')+'</div>';
+    html += '<div class="pauth">'+(q.author||'')+'</div>';
+    html += '<div class="phint">Tap underlined words to see their English meaning!</div>';
+    html += '<div class="pbody">'+tapped+'</div>';
+    html += '<div class="wrow" id="wrow"></div>';
+    html += '<div class="pqlbl">Comprehension question:</div>';
+    var cs2 = Array.isArray(q.cs) ? q.cs : [q.a||'','Option B','Option C','Option D'];
+    var opts2 = shuffle(cs2.slice());
+    window._cc = opts2; window._ca = q.a||'';
+    var letters2=['A','B','C','D'];
+    html += '<div class="choices">'+opts2.map(function(c,i){
+      return '<button class="cbtn" data-idx="'+i+'" onclick="checkMC(this)"><span class="cletter">'+letters2[i]+'</span><span>'+c+'</span></button>';
+    }).join('')+'</div>';
+  } else {
+    // Show a descriptive context banner for levels 4+
+    var contextBanner = '';
+    if (selLv === 4) contextBanner = '&#x1F4DD; Grammar & Writing Exercise';
+    else if (selLv === 5) contextBanner = '&#x1F91D; Introduce Yourself in '+selLang.n;
+    else if (selLv === 6) contextBanner = '&#x1F504; Translation Challenge';
+    else if (selLv === 7) contextBanner = '&#x1F4CB; Write a Full Summary in '+selLang.n;
+    else if (selLv === 8) contextBanner = '&#x1F4C4; Write a Paragraph in '+selLang.n;
+    else if (selLv === 9) contextBanner = '&#x1F310; Have a Real Conversation in '+selLang.n;
+    else if (selLv === 10) contextBanner = '&#x1F4DC; Write Your Full SCR Response in '+selLang.n+' (4-5 paragraphs)';
+
+    if (contextBanner) {
+      html += '<div style="background:#F3F4F6;border-radius:10px;padding:8px 12px;margin-bottom:10px;font-size:.78rem;font-weight:800;color:#546E7A;">'+contextBanner+'</div>';
+    }
+
+    var promptText = q.p || q.prompt || '';
+    if (!promptText || promptText.trim() === '') {
+      // Generate a fallback prompt if AI returned empty
+      var fallbackPrompts = {
+        4: 'Write a sentence in '+selLang.n+' using the correct grammar:',
+        5: 'Introduce yourself in '+selLang.n+':',
+        6: 'Translate the following into '+selLang.n+':',
+        7: 'Write a short summary in '+selLang.n+':',
+        8: 'Write a paragraph in '+selLang.n+' about your daily life:',
+        9: 'Respond naturally in '+selLang.n+':',
+        10: 'Write your full SCR response in '+selLang.n+':'
+      };
+      promptText = fallbackPrompts[selLv] || 'Complete this exercise in '+selLang.n+':';
+    }
+
+    html += '<div class="qprompt">'+promptText+'</div>';
+    html += '<div class="qmeta">'+selLang.f+' '+selLang.n+' &middot; Level '+selLv+': '+lvNames[selLv-1]+' &middot; Q'+(qIdx+1)+'/'+qs.length+'</div>';
+    if (q.t === 'mc') {
+      var cs = Array.isArray(q.cs) && q.cs.length > 0 ? q.cs : [q.a||'','...','...','...'];
+      var opts = shuffle(cs.slice());
+      window._cc = opts; window._ca = q.a||'';
+      var letters=['A','B','C','D'];
+      html += '<div class="choices">'+opts.map(function(c,i){
+        return '<button class="cbtn" data-idx="'+i+'" onclick="checkMC(this)"><span class="cletter">'+letters[i]+'</span><span>'+c+'</span></button>';
+      }).join('')+'</div>';
+    } else {
+      // Levels 7,8,10 use textarea for longer writing; levels 6,9 use regular input
+      var isLongWrite = selLv >= 7;
+      var isSCR = selLv === 10;
+      if (isLongWrite) {
+        var taClass = 'textarea-input' + (isSCR ? ' scr-textarea' : '');
+        html += '<textarea class="'+taClass+'" id="tinp" placeholder="'+(isSCR ? 'Write your full SCR response here (4-5 paragraphs)...' : 'Write your answer in '+selLang.n+'...')+'"></textarea>';
+        html += '<div class="word-count-hint" id="wcount">0 words</div>';
+        if (q.h) html += '<div class="hinttxt">'+q.h+'</div>';
+        html += '<button class="subbtn" onclick="submitType()">Submit '+(isSCR?'Full SCR':'Writing')+'</button>';
+      } else {
+        html += '<input class="tinput" id="tinp" placeholder="Type your answer..." onkeydown="if(event.key===\'Enter\')submitType()">';
+        if (q.h) html += '<div class="hinttxt">Hint: '+q.h+'</div>';
+        html += '<button class="subbtn" onclick="submitType()">Submit Answer</button>';
+      }
+    }
+  }
+
+  html += '<div class="aibox" id="aibox"><div class="aihdr"><div class="aiav">&#x1F916;</div><div><div class="aittl">Immilish AI</div><div class="aisub">Your personal language coach</div></div></div><div class="aimsg" id="aimsg"><div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div></div></div>';
+  html += '<button class="nxtbtn" id="nxtbtn" onclick="nextQ()">'+(qIdx===qs.length-1?'&#x1F3C1; See My Results!':'Next Question &rarr;')+'</button>';
+  card.innerHTML = html;
+  var el=document.getElementById('tinp');
+  if(el) {
+    el.focus();
+    // Word counter for textareas
+    if(el.tagName === 'TEXTAREA') {
+      el.addEventListener('input', function() {
+        var words = this.value.trim().split(/\s+/).filter(function(w){return w.length>0;});
+        var wc = document.getElementById('wcount');
+        if(wc) wc.textContent = words.length + ' word' + (words.length!==1?'s':'');
+      });
+    }
+  }
+}
+
+
+// =======================================================
+// CHECK ANSWERS
+// =======================================================
+function checkMC(btn) {
+  if (answered) return;
+  if (!window._cc || !window._ca) return;
+  answered = true;
+  var idx = parseInt(btn.getAttribute('data-idx'));
+  var chosen = window._cc[idx] || '';
+  var right = (chosen === window._ca);
+  document.querySelectorAll('.cbtn').forEach(function(b) {
+    b.disabled = true;
+    var bi = parseInt(b.getAttribute('data-idx'));
+    if (window._cc[bi] === window._ca) b.classList.add('ok');
+    else if (b===btn && !right) b.classList.add('no');
+  });
+  handleResult(right, window._ca, qs[qIdx]);
+}
+
+function submitType() {
+  if (answered) return;
+  var inp = document.getElementById('tinp');
+  if (!inp) return;
+  var ua = inp.value.trim();
+  if (!ua) return; // don't submit empty
+  var q = qs[qIdx];
+  if (!q) return;
+  var answer = q.a || 'any';
+
+  // Disable input immediately so user knows it was received
+  inp.disabled = true;
+  answered = true;
+
+  // Levels 7-10 are open-ended writing — always accept and let AI give feedback
+  if (answer === 'any' || selLv >= 7) {
+    inp.classList.add('ok');
+    handleResult(true, ua, q, ua);
+    return;
+  }
+
+  // Check for exact match first (case-insensitive, trim spaces)
+  var exactMatch = ua.toLowerCase() === answer.toLowerCase().trim();
+  if (exactMatch) {
+    inp.classList.add('ok');
+    handleResult(true, answer, q, ua);
+    return;
+  }
+
+  // Also check some common variations:
+  // - ignore accents/diacritics for romanized answers
+  // - accept if typed answer is contained in correct answer or vice versa (partial match for long answers)
+  var normalize = function(s) {
+    return s.toLowerCase()
+      .replace(/[àáâãäå]/g,'a').replace(/[èéêë]/g,'e').replace(/[ìíîï]/g,'i')
+      .replace(/[òóôõö]/g,'o').replace(/[ùúûü]/g,'u').replace(/[ñ]/g,'n')
+      .replace(/[ç]/g,'c').replace(/[ý]/g,'y').replace(/\s+/g,' ').trim();
+  };
+  var normUser = normalize(ua);
+  var normAnswer = normalize(answer);
+  var softMatch = normUser === normAnswer;
+
+  if (softMatch) {
+    inp.classList.add('ok');
+    handleResult(true, answer, q, ua);
+    return;
+  }
+
+  // For AI-generated questions (no hardcoded bank), use AI to judge the answer
+  // This handles Nepali, Turkish, Swahili etc where we don't know all valid forms
+  var hasBuiltInBank = BANKS[selLang.n] && BANKS[selLang.n][selLv];
+  if (!hasBuiltInBank) {
+    // Show pending state while AI decides
+    inp.classList.add('ok'); // optimistically show pending
+    inp.style.borderColor = '#FFD54F';
+    inp.style.background = '#FFFDE7';
+    aiJudgeAnswer(ua, answer, q, inp);
+    return;
+  }
+
+  // Built-in bank question that doesn't match — mark wrong
+  inp.classList.add('no');
+  handleResult(false, answer, q, ua);
+}
+
+async function aiJudgeAnswer(userTyped, correctAnswer, q, inp) {
+  // Show AI thinking state in the input
+  var sys = 'You are a language learning judge for Immilish app. The student is learning ' + selLang.n + '. ' +
+    'A student answered a type-in question. Decide if their answer is CORRECT or CLOSE ENOUGH to accept. ' +
+    'Be GENEROUS: accept correct transliterations, romanizations, close spellings, synonyms, and alternate valid forms. ' +
+    'If someone types "namaste" for a Nepali hello question, that is correct. ' +
+    'If someone types the word in any valid script or romanization, accept it. ' +
+    'Reply with ONLY a JSON object: {"correct": true or false, "note": "brief explanation"}';
+
+  var userMsg = 'Question: "' + (q.p||q.title||'')+'"' +
+    ' | The expected answer is: "' + correctAnswer + '"' +
+    ' | The student typed: "' + userTyped + '"' +
+    ' | Is the student answer correct or close enough to accept?';
+
+  try {
+    var res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 200,
+        system: sys,
+        messages: [{role:'user', content: userMsg}]
+      })
+    });
+    var data = await res.json();
+    var raw = (data.content && data.content[0] && data.content[0].text) || '{"correct":false}';
+    raw = raw.replace(/```json|```/g,'').trim();
+    var result = JSON.parse(raw);
+    var isRight = result.correct === true;
+    inp.style.borderColor = '';
+    inp.style.background = '';
+    inp.classList.remove('ok','no');
+    inp.classList.add(isRight ? 'ok' : 'no');
+    handleResult(isRight, correctAnswer, q, userTyped);
+  } catch(e) {
+    // If AI fails, be generous and accept it
+    inp.style.borderColor = '';
+    inp.style.background = '';
+    inp.classList.add('ok');
+    handleResult(true, correctAnswer, q, userTyped);
+  }
+}
+
+function handleResult(right, ans, q, typed) {
+  if (right) { score += 10 + streak*2; correct++; streak++; best = Math.max(best, streak); }
+  else { streak = 0; }
+  callAI(right, ans, q, typed);
+  document.getElementById('nxtbtn').classList.add('show');
+}
+
+// =======================================================
+// AI FEEDBACK
+// =======================================================
+async function callAI(right, ans, q, typed) {
+  var box = document.getElementById('aibox');
+  var msg = document.getElementById('aimsg');
+  if (!box || !msg) return;
+  box.classList.add('show');
+  var lang = selLang.n;
+  var userIn = typed || (right ? ans : 'a wrong option');
+  var sys = 'You are Immilish AI, a warm fun language coach. The student is learning ' + lang + '. Keep responses to 2-4 sentences. Be enthusiastic! CORRECT: celebrate, reinforce the word in ' + lang + '. WRONG: be gentle, explain "' + ans + '" clearly with a memory trick, end with encouragement. Bold target language words with **word**. Never shame the student!';
+  var isOpenEnded = selLv >= 7 || answer === 'any';
+  var content;
+  if (isOpenEnded) {
+    content = 'The student is doing Level '+selLv+' ('+selLang.n+') writing practice. Prompt: "' + (q.p || q.title || '') + '". Student wrote: "' + userIn + '". Give brief encouraging feedback (2-3 sentences): praise what they did well, give ONE tip to improve. Be warm and specific.';
+  } else {
+    content = right
+      ? 'Student correctly answered "' + ans + '" for: "' + (q.p || q.title || '') + '". Celebrate!'
+      : 'Student answered "' + userIn + '" but correct was "' + ans + '" for: "' + (q.p || q.title || '') + '". Help gently.';
+  }
+  try {
+    var res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({model:'claude-sonnet-4-20250514', max_tokens:1000, system:sys, messages:[{role:'user', content:content}]})
+    });
+    var data = await res.json();
+    var text = (data.content && data.content[0] && data.content[0].text) || 'Keep going!';
+    msg.innerHTML = (right ? '&#x2705;' : '&#x1F4A1;') + ' ' + text.replace(/\*\*(.*?)\*\*/g, '<span class="hl">$1</span>');
+  } catch(e) {
+    msg.innerHTML = right
+      ? '&#x2705; <span class="hl">Correct!</span> Amazing work! &#x1F389;'
+      : '&#x1F4A1; The correct answer is <span class="hl">' + ans + '</span>. Keep going! &#x1F4AA;';
+  }
+}
+
+// =======================================================
+// CONVERSATION BUDDY — DRAG & DROP
+// =======================================================
+
+function onDzOver(e) { e.preventDefault(); var z=document.getElementById('dropZone'); if(z)z.classList.add('drag-over'); }
+function onDzLeave(e) { var z=document.getElementById('dropZone'); if(z)z.classList.remove('drag-over'); }
+var _dragWord = null;
+var _dragIdx = null;
+
+function dragStart(e) {
+  _dragWord = e.target.dataset.word;
+  _dragIdx = e.target.dataset.idx;
+  e.target.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+}
+
+function dragEnd(e) {
+  e.target.classList.remove('dragging');
+}
+
+function dropWord(e) {
+  e.preventDefault();
+  var zone = document.getElementById('dropZone');
+  zone.classList.remove('drag-over');
+  if (!_dragWord) return;
+  // Only place if not already placed
+  var tile = document.getElementById('wtile-' + _dragIdx);
+  if (tile && !tile.classList.contains('placed')) {
+    placeTile(tile, _dragWord);
+  }
+  _dragWord = null; _dragIdx = null;
+}
+
+// Also support tap-to-place on mobile
+function tapTile(tile) {
+  if (answered) return;
+  if (tile.classList.contains('placed')) {
+    // Tap placed tile to remove it
+    removePlaced(tile.dataset.word, tile.dataset.idx);
+  } else {
+    placeTile(tile, tile.dataset.word);
+  }
+}
+
+function placeTile(tile, word) {
+  if (answered) return;
+  tile.classList.add('placed');
+  window._convoPlaced.push({word: word, idx: tile.dataset.idx});
+
+  var zone = document.getElementById('dropZone');
+  var ph = document.getElementById('dropPlaceholder');
+  if (ph) ph.style.display = 'none';
+
+  // Create placed word in drop zone
+  var placed = document.createElement('div');
+  placed.className = 'word-tile placed';
+  placed.textContent = word;
+  placed.dataset.word = word;
+  placed.dataset.idx = tile.dataset.idx;
+  placed.onclick = function() { removePlaced(word, tile.dataset.idx); };
+  placed.setAttribute('title', 'Tap to remove');
+  zone.appendChild(placed);
+
+  // Enable check button if at least one word placed
+  var btn = document.getElementById('convoCheckBtn');
+  if (btn) btn.disabled = false;
+}
+
+function removePlaced(word, idx) {
+  if (answered) return;
+  // Remove from placed array
+  window._convoPlaced = window._convoPlaced.filter(function(p) { return p.idx !== idx; });
+  // Remove from drop zone
+  var zone = document.getElementById('dropZone');
+  var tiles = zone.querySelectorAll('.word-tile');
+  tiles.forEach(function(t) { if (t.dataset.idx === idx) t.remove(); });
+  // Restore original tile
+  var orig = document.getElementById('wtile-' + idx);
+  if (orig) orig.classList.remove('placed');
+  // Show placeholder if empty
+  var ph = document.getElementById('dropPlaceholder');
+  if (ph && zone.querySelectorAll('.word-tile').length === 0) ph.style.display = '';
+  // Disable check if empty
+  var btn = document.getElementById('convoCheckBtn');
+  if (btn) btn.disabled = (window._convoPlaced.length === 0);
+}
+
+function checkConvo() {
+  if (answered) return;
+  answered = true;
+
+  var placed = window._convoPlaced.map(function(p) { return p.word; });
+  var correct = window._convoAnswer;
+
+  // Check if placed words match correct answer (in order)
+  var isRight = placed.length === correct.length &&
+    placed.every(function(w, i) { return w === correct[i]; });
+
+  // Also do a lenient check - ignore order, just check all words present
+  if (!isRight) {
+    var placedSorted = placed.slice().sort().join(' ');
+    var correctSorted = correct.slice().sort().join(' ');
+    isRight = placedSorted === correctSorted;
+  }
+
+  var zone = document.getElementById('dropZone');
+  var btn = document.getElementById('convoCheckBtn');
+  if (btn) btn.disabled = true;
+
+  // Color the placed tiles
+  zone.querySelectorAll('.word-tile').forEach(function(t) {
+    t.classList.remove('placed');
+    t.classList.add(isRight ? 'correct-tile' : 'wrong-tile');
+    t.onclick = null;
+  });
+
+  zone.classList.add(isRight ? 'correct-zone' : 'wrong-zone');
+
+  // Show correct answer if wrong
+  if (!isRight) {
+    var correctShow = document.createElement('div');
+    correctShow.className = 'correct-answer-show';
+    correctShow.textContent = '✓ Correct order: ' + correct.join(' ');
+    zone.parentNode.insertBefore(correctShow, zone.nextSibling);
+  }
+
+  handleResult(isRight, correct.join(' '), qs[qIdx], placed.join(' '));
+}
+
+// =======================================================
+// PARAGRAPH WORD TAP
+// =======================================================
+function tapW(word, el) {
+  el.classList.add('tapped');
+  document.getElementById('pww').textContent = word;
+  document.getElementById('pwp').textContent = '';
+  document.getElementById('pwe').style.display = 'none';
+  document.getElementById('pwd').innerHTML = '<div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>';
+  document.getElementById('wpop').classList.add('open');
+  document.getElementById('pov').style.display = 'block';
+  if (!window._lw) window._lw = new Set();
+  window._lw.add(word);
+  var row = document.getElementById('wrow');
+  if (row) {
+    row.innerHTML = '';
+    window._lw.forEach(function(w) {
+      var ch = document.createElement('span');
+      ch.className = 'wchip';
+      ch.textContent = '&#x2713; ' + w;
+      row.appendChild(ch);
+    });
+  }
+  var local = window._pw && window._pw[word];
+  if (local) {
+    document.getElementById('pwp').textContent = 'Filipino / Tagalog';
+    document.getElementById('pwd').innerHTML = '<strong>' + word + '</strong> &mdash; ' + local;
+  } else {
+    fetchWordAI(word);
+  }
+}
+
+async function fetchWordAI(word) {
+  var lang = selLang ? selLang.n : 'Filipino';
+  try {
+    var res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({model:'claude-sonnet-4-20250514', max_tokens:1000, system:'You are a dictionary. Return ONLY a JSON object with keys: definition, pronunciation, example. No markdown.', messages:[{role:'user', content:'Define this ' + lang + ' word: "' + word + '"'}]})
+    });
+    var data = await res.json();
+    var parsed;
+    try { parsed = JSON.parse(data.content[0].text); } catch(e) { parsed = {definition: data.content[0].text, pronunciation:'', example:''}; }
+    document.getElementById('pwp').textContent = parsed.pronunciation || '';
+    document.getElementById('pwd').innerHTML = '<strong>' + word + '</strong> &mdash; ' + (parsed.definition || 'Definition unavailable');
+    if (parsed.example) {
+      var ex = document.getElementById('pwe');
+      ex.textContent = parsed.example;
+      ex.style.display = 'block';
+    }
+  } catch(e) {
+    document.getElementById('pwd').innerHTML = '<strong>' + word + '</strong> &mdash; Definition unavailable. Try again!';
+  }
+}
+
+function closePop() {
+  document.getElementById('wpop').classList.remove('open');
+  document.getElementById('pov').style.display = 'none';
+}
+
+// =======================================================
+// NAVIGATION
+// =======================================================
+function nextQ() {
+  qIdx++;
+  if (qIdx >= qs.length) showResults();
+  else renderQ();
+}
+
+function showResults() {
+  document.getElementById('pgbar').style.width = '100%';
+  var pct = Math.round(correct / qs.length * 100);
+  if (pct >= 40) {
+    if (!done[selLang.n]) done[selLang.n] = [];
+    if (!done[selLang.n].includes(selLv)) done[selLang.n].push(selLv);
+  }
+  var trophy, title, sub;
+  if (pct === 100) { trophy='&#x1F31F;'; title='Perfect Score!'; sub='Incredible! Every question right in ' + selLang.n + '! You are a natural!'; confetti(); }
+  else if (pct >= 70) { trophy='&#x1F3C6;'; title='Great Job!'; sub='Awesome progress in ' + selLang.n + '! Keep going!'; }
+  else if (pct >= 40) { trophy='&#x1F4AA;'; title='Keep Going!'; sub='Every mistake is a lesson! Try the next level!'; }
+  else { trophy='&#x1F331;'; title='Just Getting Started!'; sub='Every expert was once a beginner! Try again!'; }
+  document.getElementById('rtr').textContent = trophy;
+  document.getElementById('rti').textContent = title;
+  document.getElementById('rsb').textContent = sub;
+  document.getElementById('rbg').textContent = selLang.f + ' ' + selLang.n + ' · Level ' + selLv;
+  document.getElementById('sc').textContent = score;
+  document.getElementById('sco').textContent = correct + '/' + qs.length;
+  document.getElementById('sst').textContent = best;
+  var nb = document.getElementById('nxtbtn');
+  if (nb) {
+    if (pct >= 40 && selLv < 5) nb.textContent = 'Next Level: ' + (LEVELS[selLv] ? LEVELS[selLv].label : '') + ' →';
+    else if (pct >= 40) nb.textContent = '&#x1F3C6; All Levels Complete!';
+    else nb.textContent = 'Try Again to Unlock Next Level &#x1F4AA;';
+  }
+  show(4);
+}
+
+function doNext() {
+  var pct = Math.round(correct / qs.length * 100);
+  if (pct >= 40 && selLv < 10) { selLv++; startLesson(); }
+  else if (pct >= 40) { goPath(); }
+  else { startLesson(); }
+}
+
+function show(n) {
+  document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById('s' + n).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function confetti() {
+  var colors = ['#FF7043','#FFD54F','#66BB6A','#4FC3F7','#CE93D8','#1A237E'];
+  for (var i = 0; i < 80; i++) {
+    (function(delay) {
+      setTimeout(function() {
+        var el = document.createElement('div');
+        el.className = 'cpiece';
+        el.style.cssText = 'left:' + Math.random()*100 + 'vw;top:-10px;background:' + colors[Math.floor(Math.random()*colors.length)] + ';width:' + (6+Math.random()*10) + 'px;height:' + (6+Math.random()*10) + 'px;border-radius:' + (Math.random()>.5?'50%':'2px') + ';animation-duration:' + (2+Math.random()*2) + 's;animation-delay:' + Math.random()*.5 + 's;';
+        document.body.appendChild(el);
+        setTimeout(function() { el.remove(); }, 4000);
+      }, delay);
+    })(i * 30);
+  }
+}
+
+// =======================================================
+// INIT
+// =======================================================
+buildRegions('');
+</script>
+</body>
+</html>
