@@ -12,7 +12,7 @@ workflows:
         bundle_identifier: com.tylm.immilish
       vars:
         BUNDLE_ID: "com.tylm.immilish"
-        XCODE_PROJECT: "Immilish-Xcode-Project/Immilish/Immilish.xcodeproj"
+        XCODE_PROJECT: "Immilish.xcodeproj"
         XCODE_SCHEME: "Immilish"
 
     scripts:
