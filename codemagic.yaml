@@ -4,10 +4,9 @@ workflows:
     max_build_duration: 60
     instance_type: mac_mini_m2
 
-    integrations:
-      app_store_connect: Immilish ASC Key
-
     environment:
+      groups:
+        - immilish-secrets
       ios_signing:
         distribution_type: app_store
         bundle_identifier: com.tylm.immilish
@@ -15,14 +14,17 @@ workflows:
         BUNDLE_ID: "com.tylm.immilish"
         XCODE_PROJECT: "Immilish-Xcode-Project/Immilish/Immilish.xcodeproj"
         XCODE_SCHEME: "Immilish"
-        APP_STORE_APPLE_ID: "6744648493"
 
     scripts:
-      - name: Set Xcode version
-        script: xcode-select -p
-
-      - name: Install dependencies
-        script: echo "No dependencies needed for Immilish"
+      - name: Set up code signing
+        script: |
+          keychain initialize
+          app-store-connect fetch-signing-files \
+            "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
+          xcode-project use-profiles
 
       - name: Build Immilish
         script: |
@@ -32,29 +34,17 @@ workflows:
             -sdk iphoneos \
             -configuration Release \
             -archivePath "$CM_BUILD_DIR/Immilish.xcarchive" \
-            archive \
-            CODE_SIGN_STYLE=Automatic \
-            DEVELOPMENT_TEAM=$CM_TEAM_ID
+            archive
 
-      - name: Export IPA
-        script: |
-          xcodebuild \
-            -exportArchive \
-            -archivePath "$CM_BUILD_DIR/Immilish.xcarchive" \
-            -exportOptionsPlist /tmp/ExportOptions.plist \
-            -exportPath "$CM_BUILD_DIR/export"
-        
       - name: Create Export Options
         script: |
-          cat > /tmp/ExportOptions.plist << EOF
+          cat > /tmp/ExportOptions.plist << PLIST
           <?xml version="1.0" encoding="UTF-8"?>
           <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
           <plist version="1.0">
           <dict>
             <key>method</key>
             <string>app-store</string>
-            <key>teamID</key>
-            <string>$CM_TEAM_ID</string>
             <key>signingStyle</key>
             <string>automatic</string>
             <key>uploadBitcode</key>
@@ -63,7 +53,15 @@ workflows:
             <true/>
           </dict>
           </plist>
-          EOF
+          PLIST
+
+      - name: Export IPA
+        script: |
+          xcodebuild \
+            -exportArchive \
+            -archivePath "$CM_BUILD_DIR/Immilish.xcarchive" \
+            -exportOptionsPlist /tmp/ExportOptions.plist \
+            -exportPath "$CM_BUILD_DIR/export"
 
     artifacts:
       - $CM_BUILD_DIR/export/*.ipa
@@ -71,6 +69,8 @@ workflows:
 
     publishing:
       app_store_connect:
-        auth: integration
+        api_key: $APP_STORE_CONNECT_PRIVATE_KEY
+        key_id: $APP_STORE_CONNECT_KEY_IDENTIFIER
+        issuer_id: $APP_STORE_CONNECT_ISSUER_ID
         submit_to_testflight: true
         submit_to_app_store: false
